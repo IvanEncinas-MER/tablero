@@ -132,7 +132,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 </style></head><body>
 <header>
   <h1>Ingenieria <span>/ Tablero</span></h1>
-  <div class="upd">Actualizado 21/08/2026 12:01 &nbsp;·&nbsp; se refresca solo</div>
+  <div class="upd">Actualizado 21/08/2026 12:07 &nbsp;·&nbsp; se refresca solo</div>
 </header>
 <div class="grid">
 
@@ -165,7 +165,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 
   <div class="card">
     <h2>Bitacora de incidencias <em>origen Ing. mecanica / electrica</em></h2>
-    <div class="vacio">No se pudo leer: KeyError</div><div class="pend">Archivo: bitacora_incidencias_dashboard V4.xlsx</div>
+    <div class="sub2">Por mes <em>70 de Ingenieria &nbsp;·&nbsp; 0 sin cerrar</em></div><div class="trend inc"><div class="tcol"><div class="tval">60</div><div class="tbar" style="height:72.0%;background:#a78bfa"></div><div class="tlab">JUL</div></div><div class="tcol"><div class="tval">10</div><div class="tbar" style="height:12.0%;background:#a78bfa"></div><div class="tlab">AUG</div></div></div>
   </div>
 
   <div class="card">
@@ -190,6 +190,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
   var SEG = 300;
   var raiz = document.documentElement;
   var fallos = 0;
+  var avisoFuera = false;
 
   var pedir = raiz.requestFullscreen || raiz.webkitRequestFullscreen ||
               raiz.mozRequestFullScreen || raiz.msRequestFullscreen;
@@ -198,24 +199,34 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
     return document.fullscreenElement || document.webkitFullscreenElement ||
            document.mozFullScreenElement || document.msFullscreenElement;
   }
+  function elAviso(){ return document.getElementById('fshint'); }
   function ocultarAviso(){
-    var a = document.getElementById('fshint');
+    avisoFuera = true;
+    var a = elAviso();
     if (a) a.style.display = 'none';
   }
   function aPantallaCompleta(){
+    if (!pedir) return;              /* sin soporte: dejamos el aviso con la guia */
     ocultarAviso();
-    if (!pedir || completa()) return;
+    if (completa()) return;
     try { pedir.call(raiz); } catch(e) {}
   }
 
-  /* Si la TV ni siquiera soporta pantalla completa, no dejamos el aviso
-     colgado para siempre. */
-  if (!pedir) setTimeout(ocultarAviso, 8000);
+  /* Si la TV no implementa pantalla completa, no sirve de nada dejar el aviso
+     diciendo "presiona OK": mejor decirle a Ivan que ya no insista y por donde
+     si se puede. Muchos navegadores de TV solo la traen en su propio menu. */
+  if (!pedir) {
+    var a = elAviso();
+    if (a) a.innerHTML = 'Esta TV no permite pantalla completa desde la pagina.' +
+                         ' Buscala en el menu del navegador.';
+    setTimeout(ocultarAviso, 20000);
+  }
 
+  /* En las TV el control remoto manda codigos distintos segun la marca, asi
+     que aceptamos cualquier tecla en vez de adivinar cual es "OK". */
   document.addEventListener('click', aPantallaCompleta);
-  document.addEventListener('keydown', function(ev){
-    if (ev.keyCode === 13 || ev.keyCode === 32) aPantallaCompleta();
-  });
+  document.addEventListener('touchstart', aPantallaCompleta);
+  document.addEventListener('keydown', aPantallaCompleta);
 
   /* Refresco SIN recargar la pagina: una recarga normal saca del modo
      pantalla completa, y en la TV no hay como volver a entrar sin que
@@ -237,7 +248,9 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
         var doc = new DOMParser().parseFromString(x.responseText, 'text/html');
         if (doc && doc.body) {
           document.body.innerHTML = doc.body.innerHTML;
-          if (completa()) ocultarAviso();
+          /* el aviso vuelve a aparecer con el HTML nuevo: si ya lo quitamos
+             una vez, no lo mostramos de nuevo cada 5 minutos */
+          if (avisoFuera) { var a2 = elAviso(); if (a2) a2.style.display = 'none'; }
         }
       } catch(e) {}
     };
