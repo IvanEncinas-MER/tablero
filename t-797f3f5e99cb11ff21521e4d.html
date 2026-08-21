@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="300">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<title>Ingenieria - Tablero</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0b1220;color:#e8eefc;font-family:'Segoe UI',system-ui,sans-serif;
+padding:16px 22px;height:100vh;overflow:hidden}
+header{display:flex;justify-content:space-between;align-items:baseline;
+border-bottom:2px solid #1e2a44;padding-bottom:9px;margin-bottom:13px}
+h1{font-size:26px;letter-spacing:-.5px}
+h1 span{color:#60a5fa}
+.upd{font-size:15px;color:#8296b8}
+.grid{display:grid;grid-template-columns:0.8fr 1.15fr 1.15fr 0.9fr;gap:13px;grid-auto-rows:minmax(0,1fr);height:calc(100vh - 78px)}
+.card{background:#121c30;border:1px solid #1e2a44;border-radius:11px;padding:13px 15px;overflow:hidden;min-height:0}
+.card h2{font-size:13px;text-transform:uppercase;letter-spacing:1.2px;
+color:#8296b8;margin-bottom:9px;font-weight:600}
+.card h2 em{font-style:normal;font-weight:400;text-transform:none;
+letter-spacing:0;color:#5b6e8c;margin-left:9px;font-size:11px}
+.big{font-size:50px;font-weight:700;line-height:1}
+.big.sm{font-size:38px}
+.sub{font-size:15px;color:#8296b8;margin-top:6px}
+.kpis{display:flex;gap:16px;margin-top:11px;flex-wrap:wrap}
+.kpi b{display:block;font-size:23px}
+.kpi small{color:#8296b8;font-size:12px;white-space:nowrap}
+.trend{display:flex;align-items:flex-end;gap:14px;height:calc(100% - 30px);padding-top:4px;justify-content:flex-start;overflow:hidden}
+.tcol{flex:1;max-width:190px;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.tval{font-size:17px;font-weight:600;color:#e8eefc;margin-bottom:6px}
+.tbar{width:100%;border-radius:5px 5px 0 0;flex:0 0 auto}
+.tlab{font-size:14px;color:#8296b8;margin-top:8px;text-align:center}
+.tlab span{display:block;font-size:12px;color:#5b6e8c}
+.row{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.nm{width:112px;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nm .et{display:block;font-size:11px;color:#8296b8}
+.bar{flex:1;height:13px;background:#1e2a44;border-radius:6px;overflow:hidden}
+.fill{height:100%;border-radius:6px}
+.vl{width:34px;text-align:right;font-size:18px;font-weight:700}
+.tv{width:100%;border-collapse:collapse;font-size:14px}
+.tv td{padding:5px 4px;white-space:nowrap;border-bottom:1px solid #1a2438}
+.tv .tipo{font-weight:600}
+.tv .proy,.tv .quien{color:#8296b8}
+.tv .fec{text-align:right;color:#ef4444;font-variant-numeric:tabular-nums}
+.mas{font-size:13px;color:#8296b8;margin-top:8px}
+.vacio{color:#5b6e8c;font-size:15px;padding:14px 0}
+.vacio.ok{color:#22c55e}
+.sub2{font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
+color:#b9c8e2;margin:0 0 7px}
+.sub2 em{display:block;font-style:normal;font-weight:400;text-transform:none;
+letter-spacing:0;color:#5b6e8c;margin-left:0;margin-top:1px;font-size:10px}
+.sub2.sep{margin-top:12px;padding-top:10px;border-top:1px solid #1e2a44}
+.wide{grid-column:span 2}
+.mid{grid-column:span 2}
+.full{grid-column:1/-1}
+.colstack{display:flex;flex-direction:column;gap:13px}
+.colstack .card{flex:1}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+.cols1 .prow{margin-bottom:10px;padding-bottom:9px;border-bottom:1px solid #17222f}
+.cols1 .prow:last-child{border-bottom:none;margin-bottom:0}
+.phead{font-size:10px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;
+color:#7d90ad;border-bottom:1px solid #24334f !important;padding-bottom:5px !important;
+margin-bottom:7px !important}
+.phead .bar{background:none;height:auto;color:#7d90ad}
+.phead .nm,.phead .oc,.phead .etp,.phead b,.phead span,.phead .fin{
+color:#7d90ad;font-size:10px;font-weight:700;letter-spacing:0;white-space:nowrap}
+.phead .fin{white-space:normal;line-height:1.15}
+
+.phead .bar{letter-spacing:.6px}
+.cols1.compacto .prow{margin-bottom:3px;padding-bottom:3px}
+.cols1.compacto .nm{width:210px;font-size:15px}
+.cols1.compacto .oc{width:88px;font-size:11px;padding:1px 5px}
+.cols1.compacto .etp{width:104px;font-size:11px}
+.cols1.compacto .fase{font-size:12px}
+.cols1.compacto .fase i{width:64px;font-size:11px}
+.cols1.compacto .fase b{font-size:14px;width:38px}
+.cols1.compacto .fase .bar{height:10px}
+.cols1.compacto .fase .fin{font-size:12px;width:88px;padding:1px 5px}
+.cols1.compacto .mark{height:18px;top:-4px}
+.cols1 .nm{width:290px;font-size:19px}
+.oc{width:96px;font-size:13px;font-weight:700;color:#b9c8e2;
+font-variant-numeric:tabular-nums;flex:0 0 auto}
+.etp{width:150px;font-size:12px;color:#8296b8;flex:0 0 auto;
+white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.flecha{text-decoration:none;color:#5b6e8c;font-size:13px;width:14px;text-align:center}
+/* Las 3 columnas de FECHA se resaltan igual para que se lean como un grupo:
+   alta de trabajo, liberacion de BOMs y liberacion de planos. */
+.oc,.fase .fin{background:rgba(125,211,252,.10);border:1px solid rgba(125,211,252,.22);
+border-radius:5px;padding:3px 7px;color:#7dd3fc;text-align:center}
+.fase .fin.venc{background:rgba(239,68,68,.14);border-color:rgba(239,68,68,.40);color:#ef4444}
+.fase .fin.off{background:none;border-color:transparent;color:#3d4c66}
+.phead .oc,.phead .fin{background:rgba(125,211,252,.07);
+border-color:rgba(125,211,252,.18);color:#7dd3fc;padding:2px 6px}
+@media (max-width:1500px){
+  .cols2{grid-template-columns:1fr}
+  .prow .nm{width:150px;font-size:15px}
+  .fase b{width:38px;font-size:15px}
+}
+@media (max-width:1100px){
+  .grid{grid-template-columns:1fr 1fr}
+  .wide,.mid,.full{grid-column:span 2}
+}
+.prow{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.prow .nm{width:172px;flex:0 0 auto;font-size:17px;font-weight:600;line-height:1.2;
+white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prow .nm .et{display:block;font-size:11px;font-weight:400;color:#8296b8}
+.fase{flex:1;min-width:0;display:flex;align-items:center;gap:7px;font-size:13px}
+.fase i{font-style:normal;color:#b9c8e2;width:74px;font-weight:700;font-size:12px;letter-spacing:.5px}
+.fase b{width:42px;text-align:right;font-size:16px;font-weight:700}
+.fase span{color:#5b6e8c;width:46px;font-size:12px;font-variant-numeric:tabular-nums}
+.fase .bar{position:relative;height:13px}
+.fase .fin{text-decoration:none;font-size:14px;font-weight:700;width:96px;
+text-align:right;color:#b9c8e2;font-variant-numeric:tabular-nums}
+.fase .fin.venc{color:#ef4444}
+.fase .fin.off{color:#3d4c66;font-weight:400}
+.fase.off{color:#3d4c66}
+.fase.off span{width:auto}
+.mark{position:absolute;top:-5px;width:3px;height:23px;background:#fff;
+border-radius:2px;z-index:3;box-shadow:0 0 0 1px rgba(11,18,32,.9),0 0 7px rgba(255,255,255,.85)}
+.mark::after{content:'';position:absolute;top:-4px;left:-2.5px;
+border-left:4px solid transparent;border-right:4px solid transparent;
+border-top:5px solid #fff}
+.incgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
+.trend.inc{height:calc(100% - 76px)}
+.trend.inc .tcol{max-width:110px}
+.pend{margin-top:14px;padding-top:12px;border-top:1px dashed #24334f;
+font-size:13px;color:#5b6e8c}
+</style></head><body>
+<header>
+  <h1>Ingenieria <span>/ Tablero</span></h1>
+  <div class="upd">Actualizado 21/08/2026 11:43 &nbsp;·&nbsp; se refresca solo</div>
+</header>
+<div class="grid">
+
+  <div class="colstack">
+    <div class="card">
+      <h2>OTD entregables</h2>
+      <div class="big" style="color:#22c55e">100%</div>
+      <div class="sub">sobre 6 entregados</div>
+      <div class="kpis">
+        <div class="kpi"><b style="color:#22c55e">6</b><small>en tiempo</small></div>
+        <div class="kpi"><b style="color:#ef4444">0</b><small>retrasados</small></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Riesgo actual</h2>
+      <div class="big sm" style="color:#ef4444">12</div>
+      <div class="sub">vencidos o de hoy, de 34 activos</div>
+      <div class="kpis">
+        <div class="kpi"><b style="color:#f59e0b">0</b><small>por vencer</small></div>
+        <div class="kpi"><b style="color:#22c55e">18</b><small>en tiempo</small></div>
+        <div class="kpi"><b style="color:#60a5fa">29</b><small>acciones</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Tendencia OTD (ultimos meses)</h2>
+    <div class="trend"><div class="tcol"><div class="tval">100%</div><div class="tbar" style="height:72.0%;background:#22c55e"></div><div class="tlab">AUG<span>6</span></div></div></div>
+  </div>
+
+  <div class="card">
+    <h2>Bitacora de incidencias <em>origen Ing. mecanica / electrica</em></h2>
+    <div class="vacio">No se pudo leer: KeyError</div><div class="pend">Archivo: bitacora_incidencias_dashboard V4.xlsx</div>
+  </div>
+
+  <div class="card">
+    <h2>Carga por persona</h2>
+    <div class="sub2">Ejecucion <em>proyectos abiertos</em></div><div class="row"><div class="nm">Ivan</div><div class="bar"><div class="fill" style="width:100%;background:#60a5fa"></div></div><div class="vl">2</div></div><div class="row"><div class="nm">Andres</div><div class="bar"><div class="fill" style="width:50%;background:#60a5fa"></div></div><div class="vl">1</div></div><div class="row"><div class="nm">Juan</div><div class="bar"><div class="fill" style="width:50%;background:#60a5fa"></div></div><div class="vl">1</div></div><div class="row"><div class="nm">Omar</div><div class="bar"><div class="fill" style="width:50%;background:#60a5fa"></div></div><div class="vl">1</div></div><div class="row"><div class="nm">Daniel</div><div class="bar"><div class="fill" style="width:50%;background:#60a5fa"></div></div><div class="vl">1</div></div><div class="sub2 sep">Revision <em>entregables por aprobar</em></div><div class="row"><div class="nm">Manuel</div><div class="bar"><div class="fill" style="width:100%;background:#a78bfa"></div></div><div class="vl">3</div></div><div class="row"><div class="nm">Ivan</div><div class="bar"><div class="fill" style="width:67%;background:#a78bfa"></div></div><div class="vl">2</div></div>
+  </div>
+
+  <div class="card full">
+    <h2>Avance por proyecto (2 en curso)
+      <em>la fecha es la entrega comprometida de cada fase</em>
+    </h2>
+    <div class="cols1"><div class="prow phead"><div class="nm">Proyecto</div><div class="oc">Alta trabajo</div><div class="fase"><i></i><div class="bar">Avance BOMs</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion BOMs</u></div><div class="fase"><i></i><div class="bar">Avance planos</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion planos</u></div></div><div class="prow"><div class="nm">TM1371 - BCUCR30VD.2/LVB2CL.M /</div><div class="oc">OC 15 ago</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:50%"></div><div class="fill" style="width:25%;background:#ef4444"></div></div><b>25%</b><span>d6/12</span><u class="flecha">&rarr;</u><u class="fin">27 ago</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:0%"></div><div class="fill" style="width:0%;background:#22c55e"></div></div><b>0%</b><span>d0/12</span><u class="flecha">&rarr;</u><u class="fin">5 sep</u></div></div><div class="prow"><div class="nm">TM1370 - BCUCR40VD.2/MVF3FL.M /</div><div class="oc">OC 15 ago</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:50%"></div><div class="fill" style="width:25%;background:#ef4444"></div></div><b>25%</b><span>d6/12</span><u class="flecha">&rarr;</u><u class="fin">27 ago</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:0%"></div><div class="fill" style="width:0%;background:#22c55e"></div></div><b>0%</b><span>d0/12</span><u class="flecha">&rarr;</u><u class="fin">5 sep</u></div></div></div>
+  </div>
+
+</div></body></html>
