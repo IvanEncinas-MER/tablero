@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<meta name="build" content="61ae0f50df">
+<meta name="build" content="423eb35007">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="referrer" content="no-referrer">
@@ -35,11 +35,21 @@ letter-spacing:0;color:#5b6e8c;margin-left:9px;font-size:11px}
 .sub{font-size:16px;font-size:clamp(12px,1.55vh,16px);color:#a9bad4;margin-top:6px;margin-top:clamp(3px,.6vh,6px)}
 /* nowrap: con 3 leyendas en una columna angosta se envolvian a dos lineas y
    eso era justo lo que desbordaba la tarjeta. */
+/* Ahora cada KPI es corto (una linea), asi que se permite que envuelvan:
+   es preferible un segundo renglon de KPIs a que uno se salga de la tarjeta. */
 .kpis{display:flex;gap:16px;gap:clamp(7px,1.1vw,16px);margin-top:11px;margin-top:clamp(5px,1.1vh,11px);
-flex-wrap:nowrap}
-.kpi{min-width:0}
-.kpi b{display:block;font-size:23px;font-size:clamp(16px,2.3vh,23px);line-height:1.15}
-.kpi small{color:#c3d2e8;font-size:15px;font-size:clamp(11px,1.5vh,15px);white-space:nowrap}
+flex-wrap:wrap;row-gap:4px}
+/* Numero y leyenda en la MISMA linea, no apilados.
+   Apilados, la leyenda quedaba en un segundo renglon que era lo primero en
+   perderse cuando algo no cuadraba en la TV. En una sola linea el bloque mide
+   la mitad de alto y ya no hay un renglon que se pueda quedar fuera.
+   De paso se lee mejor de lejos: "10 en tiempo" en vez de un 10 con letra
+   chiquita debajo. */
+.kpi{min-width:0;display:inline-block;white-space:nowrap}
+.kpi b{font-size:23px;font-size:clamp(16px,2.3vh,23px);line-height:1.15;
+margin-right:5px;vertical-align:baseline}
+.kpi small{color:#c3d2e8;font-size:15px;font-size:clamp(11px,1.5vh,15px);
+white-space:nowrap;vertical-align:baseline}
 .trend{display:flex;align-items:flex-end;gap:14px;height:calc(100% - 30px);padding-top:4px;justify-content:flex-start;overflow:hidden}
 .tcol{flex:1;max-width:190px;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
 .tval{font-size:17px;font-weight:600;color:#e8eefc;margin-bottom:6px}
@@ -161,8 +171,8 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 </style></head><body>
 <header>
   <h1>Ingenieria <span>/ Tablero</span></h1>
-  <div class="upd">Actualizado 21/08/2026 16:26 &nbsp;·&nbsp;
-    <span id="edad" data-gen="2026-08-21T16:26:34">se refresca solo</span></div>
+  <div class="upd">Actualizado 21/08/2026 16:38 &nbsp;·&nbsp;
+    <span id="edad" data-gen="2026-08-21T16:38:13">se refresca solo</span></div>
 </header>
 <div class="grid">
 
@@ -195,7 +205,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 
   <div class="card">
     <h2>Bitacora de incidencias <em>origen Ing. mecanica / electrica</em></h2>
-    <div class="sub2">Por mes <em>68 de Ingenieria &nbsp;·&nbsp; 0 sin cerrar</em></div><div class="trend inc"><div class="tcol"><div class="tval">60</div><div class="tbar" style="height:72.0%;background:#a78bfa"></div><div class="tlab">JUL</div></div><div class="tcol"><div class="tval">8</div><div class="tbar" style="height:9.6%;background:#a78bfa"></div><div class="tlab">AUG</div></div></div>
+    <div class="sub2">Por mes <em>70 de Ingenieria &nbsp;·&nbsp; 0 sin cerrar</em></div><div class="trend inc"><div class="tcol"><div class="tval">60</div><div class="tbar" style="height:72.0%;background:#a78bfa"></div><div class="tlab">JUL</div></div><div class="tcol"><div class="tval">10</div><div class="tbar" style="height:12.0%;background:#a78bfa"></div><div class="tlab">AUG</div></div></div>
   </div>
 
   <div class="card">
@@ -239,7 +249,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 
   /* Huella de esta version. La usa el <img> de rescate de arriba y el
      refresco de abajo para detectar que la copia en pantalla ya caduco. */
-  window.__BUILD = "61ae0f50df";
+  window.__BUILD = "423eb35007";
 
   var pedir = raiz.requestFullscreen || raiz.webkitRequestFullscreen ||
               raiz.mozRequestFullScreen || raiz.msRequestFullscreen;
@@ -314,6 +324,45 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
   if (window.addEventListener) window.addEventListener('resize', ajustar);
   /* Las fuentes de la TV a veces cargan despues del primer render */
   setTimeout(ajustar, 1200);
+
+  /* MODO DIAGNOSTICO: abrir la direccion con  ?debug=1  al final.
+     Muestra en pantalla lo que el navegador de la TV realmente calculo.
+     Sirve para dejar de suponer que soporta y que no: basta una foto. */
+  if (location.search.indexOf('debug=1') > -1) {
+    setTimeout(function(){
+      var t = [];
+      t.push('pantalla: ' + screen.width + 'x' + screen.height +
+             '  ventana: ' + window.innerWidth + 'x' + window.innerHeight +
+             '  dpr: ' + (window.devicePixelRatio || 1));
+      var sop = function(p, v){
+        try { return (window.CSS && CSS.supports && CSS.supports(p, v)) ? 'SI' : 'NO'; }
+        catch(e) { return '?'; }
+      };
+      t.push('clamp: ' + sop('font-size', 'clamp(10px,2vh,20px)') +
+             '   flex-gap: ' + sop('gap', '10px') +
+             '   vh: ' + sop('height', '10vh'));
+      var sm = document.querySelector('.kpi small');
+      var c = document.querySelector('.colstack .card');
+      if (sm && c) {
+        var s = getComputedStyle(sm), r = sm.getBoundingClientRect(),
+            cr = c.getBoundingClientRect();
+        t.push('leyenda: "' + sm.textContent + '"  tam=' + s.fontSize +
+               '  color=' + s.color + '  display=' + s.display);
+        t.push('   alto=' + Math.round(r.height) + '  ancho=' + Math.round(r.width) +
+               '  fondo=' + Math.round(r.bottom) + '  tarjetaFondo=' + Math.round(cr.bottom) +
+               '  DENTRO=' + (r.bottom <= cr.bottom ? 'SI' : 'NO'));
+      } else {
+        t.push('*** NO SE ENCONTRO NINGUNA LEYENDA EN EL HTML ***');
+      }
+      t.push('build: ' + window.__BUILD + '   UA: ' + navigator.userAgent.slice(0, 80));
+      var d = document.createElement('div');
+      d.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:9999;' +
+        'background:#000;color:#0f0;font:13px monospace;padding:8px;line-height:1.5;' +
+        'white-space:pre-wrap;border-top:2px solid #0f0';
+      d.textContent = t.join('\n');
+      document.body.appendChild(d);
+    }, 2500);
+  }
 
   /* Aviso de datos congelados.
      El riesgo real de este tablero no es que falle: es que se quede pegado
