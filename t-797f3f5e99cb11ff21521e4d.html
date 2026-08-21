@@ -3,6 +3,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="build" content="802603f962">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
 <meta name="referrer" content="no-referrer">
 <title>Ingenieria - Tablero</title>
 <style>
@@ -149,8 +152,8 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 </style></head><body>
 <header>
   <h1>Ingenieria <span>/ Tablero</span></h1>
-  <div class="upd">Actualizado 21/08/2026 15:41 &nbsp;·&nbsp;
-    <span id="edad" data-gen="2026-08-21T15:41:09">se refresca solo</span></div>
+  <div class="upd">Actualizado 21/08/2026 15:52 &nbsp;·&nbsp;
+    <span id="edad" data-gen="2026-08-21T15:52:54">se refresca solo</span></div>
 </header>
 <div class="grid">
 
@@ -200,6 +203,21 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 
 </div>
 <div id="fshint">Presiona OK (o toca la pantalla) para verlo completo</div>
+<!-- RESCATE DE VERSIONES VIEJAS.
+     Una TV puede quedarse pegada en una copia cacheada cuyo JS no sabe
+     comprobar versiones. Esa copia vieja SI inserta este <body> nuevo, y los
+     manejadores onerror en linea SI se ejecutan al insertarse por innerHTML
+     (un <script> no lo haria). Asi la pagina vieja se entera de que caduco y
+     se recarga sola, sin que nadie tenga que ir a la TV.
+     El sessionStorage evita cualquier riesgo de recarga en bucle. -->
+<img alt="" style="display:none" src="_verificar_version"
+     onerror="setTimeout(function(){try{
+       var m=document.querySelector('meta[name=build]');
+       if(!m||m.content===window.__BUILD)return;
+       if(sessionStorage.getItem('recargado'))return;
+       sessionStorage.setItem('recargado','1');
+       location.reload();
+     }catch(e){}},4000)">
 <script>
 /* Pensado para el navegador de la TV, que no tiene tecla F11.
    Escrito a proposito en JS "viejito": los navegadores de las TV
@@ -209,6 +227,10 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
   var raiz = document.documentElement;
   var fallos = 0;
   var avisoFuera = false;
+
+  /* Huella de esta version. La usa el <img> de rescate de arriba y el
+     refresco de abajo para detectar que la copia en pantalla ya caduco. */
+  window.__BUILD = "802603f962";
 
   var pedir = raiz.requestFullscreen || raiz.webkitRequestFullscreen ||
               raiz.mozRequestFullScreen || raiz.msRequestFullscreen;
@@ -287,6 +309,10 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
       fallos = 0;
       try {
         var doc = new DOMParser().parseFromString(x.responseText, 'text/html');
+        /* Si cambio el diseno (no solo los datos) hay que recargar completo:
+           reemplazar el <body> deja el CSS viejo pegado para siempre. */
+        var mb = doc.querySelector('meta[name=build]');
+        if (mb && mb.content !== window.__BUILD) { location.reload(); return; }
         if (doc && doc.body) {
           document.body.innerHTML = doc.body.innerHTML;
           /* el aviso vuelve a aparecer con el HTML nuevo: si ya lo quitamos
@@ -299,6 +325,9 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
     x.send();
   }
   setInterval(refrescar, SEG * 1000);
+  /* Un primer chequeo pronto: si la TV levanto de su cache (por ejemplo tras
+     un corte de luz), se corrige en segundos y no en 5 minutos. */
+  setTimeout(refrescar, 20000);
 })();
 </script>
 </body></html>
