@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<meta name="build" content="2da9550cf2">
+<meta name="build" content="61ae0f50df">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="referrer" content="no-referrer">
@@ -19,8 +19,8 @@ h1 span{color:#60a5fa}
 .upd{font-size:15px;color:#8296b8}
 .grid{display:grid;grid-template-columns:0.8fr 1.15fr 1.15fr 0.9fr;gap:13px;grid-auto-rows:minmax(0,1fr);height:calc(100vh - 78px)}
 .card{background:#121c30;border:1px solid #1e2a44;border-radius:11px;padding:13px 15px;overflow:hidden;min-height:0}
-.card h2{font-size:clamp(11px,1.35vh,13px);text-transform:uppercase;letter-spacing:1.2px;
-color:#8296b8;margin-bottom:clamp(4px,.9vh,9px);font-weight:600}
+.card h2{font-size:13px;font-size:clamp(11px,1.35vh,13px);text-transform:uppercase;letter-spacing:1.2px;
+color:#8296b8;margin-bottom:9px;margin-bottom:clamp(4px,.9vh,9px);font-weight:600}
 .card h2 em{font-style:normal;font-weight:400;text-transform:none;
 letter-spacing:0;color:#5b6e8c;margin-left:9px;font-size:11px}
 /* Las leyendas de abajo ("en tiempo", "acciones"...) se estaban CORTANDO en la
@@ -30,16 +30,16 @@ letter-spacing:0;color:#5b6e8c;margin-left:9px;font-size:11px}
    Por eso todo lo de estas tarjetas se mide en vh: se encoge con la pantalla
    en vez de desbordarse. Los clamp() ponen piso y techo para que ni se
    deforme en monitores grandes ni se vuelva ilegible en chicos. */
-.big{font-size:clamp(30px,4.7vh,50px);font-weight:700;line-height:1}
-.big.sm{font-size:clamp(24px,3.6vh,38px)}
-.sub{font-size:clamp(12px,1.55vh,16px);color:#a9bad4;margin-top:clamp(3px,.6vh,6px)}
+.big{font-size:50px;font-size:clamp(30px,4.7vh,50px);font-weight:700;line-height:1}
+.big.sm{font-size:38px;font-size:clamp(24px,3.6vh,38px)}
+.sub{font-size:16px;font-size:clamp(12px,1.55vh,16px);color:#a9bad4;margin-top:6px;margin-top:clamp(3px,.6vh,6px)}
 /* nowrap: con 3 leyendas en una columna angosta se envolvian a dos lineas y
    eso era justo lo que desbordaba la tarjeta. */
-.kpis{display:flex;gap:clamp(7px,1.1vw,16px);margin-top:clamp(5px,1.1vh,11px);
+.kpis{display:flex;gap:16px;gap:clamp(7px,1.1vw,16px);margin-top:11px;margin-top:clamp(5px,1.1vh,11px);
 flex-wrap:nowrap}
 .kpi{min-width:0}
-.kpi b{display:block;font-size:clamp(16px,2.3vh,23px);line-height:1.15}
-.kpi small{color:#c3d2e8;font-size:clamp(11px,1.5vh,15px);white-space:nowrap}
+.kpi b{display:block;font-size:23px;font-size:clamp(16px,2.3vh,23px);line-height:1.15}
+.kpi small{color:#c3d2e8;font-size:15px;font-size:clamp(11px,1.5vh,15px);white-space:nowrap}
 .trend{display:flex;align-items:flex-end;gap:14px;height:calc(100% - 30px);padding-top:4px;justify-content:flex-start;overflow:hidden}
 .tcol{flex:1;max-width:190px;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
 .tval{font-size:17px;font-weight:600;color:#e8eefc;margin-bottom:6px}
@@ -58,7 +58,8 @@ flex-wrap:nowrap}
 .tv .proy,.tv .quien{color:#8296b8}
 .tv .fec{text-align:right;color:#ef4444;font-variant-numeric:tabular-nums}
 .mas{font-size:13px;color:#8296b8;margin-top:8px}
-.vacio{color:#5b6e8c;font-size:clamp(12px,1.5vh,15px);padding:clamp(4px,1.3vh,14px) 0}
+.vacio{color:#5b6e8c;font-size:15px;font-size:clamp(12px,1.5vh,15px);
+padding:14px 0;padding:clamp(4px,1.3vh,14px) 0}
 .vacio.ok{color:#22c55e}
 .sub2{font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
 color:#b9c8e2;margin:0 0 7px}
@@ -77,7 +78,7 @@ letter-spacing:0;color:#5b6e8c;margin-left:0;margin-top:1px;font-size:10px}
 .colstack .card{flex:1;display:flex;flex-direction:column;min-height:0}
 .colstack .card .sub{flex:0 1 auto;min-height:0;overflow:hidden}
 .colstack .card .big{flex:0 0 auto}
-.colstack .card .kpis{flex:0 0 auto;margin-top:auto;padding-top:clamp(4px,.9vh,10px)}
+.colstack .card .kpis{flex:0 0 auto;margin-top:auto;padding-top:10px;padding-top:clamp(4px,.9vh,10px)}
 .cols2{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
 .cols1 .prow{margin-bottom:10px;padding-bottom:9px;border-bottom:1px solid #17222f}
 .cols1 .prow:last-child{border-bottom:none;margin-bottom:0}
@@ -160,8 +161,8 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 </style></head><body>
 <header>
   <h1>Ingenieria <span>/ Tablero</span></h1>
-  <div class="upd">Actualizado 21/08/2026 16:11 &nbsp;·&nbsp;
-    <span id="edad" data-gen="2026-08-21T16:11:27">se refresca solo</span></div>
+  <div class="upd">Actualizado 21/08/2026 16:19 &nbsp;·&nbsp;
+    <span id="edad" data-gen="2026-08-21T16:19:39">se refresca solo</span></div>
 </header>
 <div class="grid">
 
@@ -177,8 +178,8 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
     </div>
     <div class="card">
       <h2>Riesgo actual</h2>
-      <div class="big sm" style="color:#ef4444">3</div>
-      <div class="sub">vencidos o de hoy, de 25 activos</div>
+      <div class="big sm" style="color:#ef4444">4</div>
+      <div class="sub">vencidos o de hoy, de 26 activos</div>
       <div class="kpis">
         <div class="kpi"><b style="color:#f59e0b">0</b><small>por vencer</small></div>
         <div class="kpi"><b style="color:#22c55e">18</b><small>en tiempo</small></div>
@@ -206,7 +207,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
     <h2>Avance por proyecto (2 en curso)
       <em>la fecha es la entrega comprometida de cada fase</em>
     </h2>
-    <div class="cols1"><div class="prow phead"><div class="nm">Proyecto</div><div class="oc">Alta trabajo</div><div class="oc">Fecha OC</div><div class="fase"><i></i><div class="bar">Avance BOMs</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion BOMs</u></div><div class="fase"><i></i><div class="bar">Avance planos</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion planos</u></div></div><div class="prow"><div class="nm">TM1371 - BCUCR30VD.2/LVB2CL.M /</div><div class="oc">15 ago</div><div class="oc">13 ago</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:42%"></div><div class="fill" style="width:67%;background:#22c55e"></div></div><b>67%</b><span>d5/12</span><u class="flecha">&rarr;</u><u class="fin">29 ago</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:0%"></div><div class="fill" style="width:0%;background:#22c55e"></div></div><b>0%</b><span>d0/12</span><u class="flecha">&rarr;</u><u class="fin">9 sep</u></div></div><div class="prow"><div class="nm">TM1370 - BCUCR40VD.2/MVF3FL.M /</div><div class="oc">15 ago</div><div class="oc">13 ago</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:42%"></div><div class="fill" style="width:58%;background:#22c55e"></div></div><b>58%</b><span>d5/12</span><u class="flecha">&rarr;</u><u class="fin">29 ago</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:0%"></div><div class="fill" style="width:0%;background:#22c55e"></div></div><b>0%</b><span>d0/12</span><u class="flecha">&rarr;</u><u class="fin">9 sep</u></div></div></div>
+    <div class="cols1"><div class="prow phead"><div class="nm">Proyecto</div><div class="oc">Alta trabajo</div><div class="oc">Fecha OC</div><div class="fase"><i></i><div class="bar">Avance BOMs</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion BOMs</u></div><div class="fase"><i></i><div class="bar">Avance planos</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion planos</u></div></div><div class="prow"><div class="nm">TM1371 - BCUCR30VD.2/LVB2CL.M /</div><div class="oc">15 ago</div><div class="oc">13 ago</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:42%"></div><div class="fill" style="width:58%;background:#22c55e"></div></div><b>58%</b><span>d5/12</span><u class="flecha">&rarr;</u><u class="fin">29 ago</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:0%"></div><div class="fill" style="width:0%;background:#22c55e"></div></div><b>0%</b><span>d0/12</span><u class="flecha">&rarr;</u><u class="fin">9 sep</u></div></div><div class="prow"><div class="nm">TM1370 - BCUCR40VD.2/MVF3FL.M /</div><div class="oc">15 ago</div><div class="oc">13 ago</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:42%"></div><div class="fill" style="width:58%;background:#22c55e"></div></div><b>58%</b><span>d5/12</span><u class="flecha">&rarr;</u><u class="fin">29 ago</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:0%"></div><div class="fill" style="width:0%;background:#22c55e"></div></div><b>0%</b><span>d0/12</span><u class="flecha">&rarr;</u><u class="fin">9 sep</u></div></div></div>
   </div>
 
 </div>
@@ -238,7 +239,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 
   /* Huella de esta version. La usa el <img> de rescate de arriba y el
      refresco de abajo para detectar que la copia en pantalla ya caduco. */
-  window.__BUILD = "2da9550cf2";
+  window.__BUILD = "61ae0f50df";
 
   var pedir = raiz.requestFullscreen || raiz.webkitRequestFullscreen ||
               raiz.mozRequestFullScreen || raiz.msRequestFullscreen;
@@ -269,6 +270,50 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
                          ' Buscala en el menu del navegador.';
     setTimeout(ocultarAviso, 20000);
   }
+
+  /* AJUSTE POR MEDICION.
+     El CSS ya deberia bastar, pero el navegador de la TV no es el mismo que
+     el de la PC: puede no entender clamp(), calcular vh distinto, o traer
+     otra fuente por defecto. En vez de adivinar que soporta, la pagina MIDE
+     si las leyendas ("en tiempo", "acciones"...) quedaron dentro de su
+     tarjeta y, si no, encoge en pasos hasta que quepan.
+     Asi el resultado es correcto en cualquier navegador, incluso en uno que
+     nunca pudimos probar. */
+  function cabe(c){
+    var lim = c.getBoundingClientRect().bottom - 2;
+    var ss = c.getElementsByTagName('small');
+    for (var i = 0; i < ss.length; i++) {
+      if (ss[i].getBoundingClientRect().bottom > lim) return false;
+    }
+    return true;
+  }
+
+  function ajustar(){
+    var cards = document.querySelectorAll('.colstack .card');
+    for (var i = 0; i < cards.length; i++) {
+      var c = cards[i];
+      var els = c.querySelectorAll('h2,.big,.sub,.kpi b,.kpi small');
+      var j;
+      for (j = 0; j < els.length; j++) els[j].style.fontSize = '';   /* partir de cero */
+      if (cabe(c)) continue;
+
+      var base = [];
+      for (j = 0; j < els.length; j++) {
+        base.push(parseFloat(getComputedStyle(els[j]).fontSize) || 14);
+      }
+      var f = 1, intentos = 0;
+      while (!cabe(c) && intentos < 16) {
+        f *= 0.93; intentos++;
+        for (j = 0; j < els.length; j++) {
+          els[j].style.fontSize = Math.max(9, base[j] * f).toFixed(1) + 'px';
+        }
+      }
+    }
+  }
+  ajustar();
+  if (window.addEventListener) window.addEventListener('resize', ajustar);
+  /* Las fuentes de la TV a veces cargan despues del primer render */
+  setTimeout(ajustar, 1200);
 
   /* Aviso de datos congelados.
      El riesgo real de este tablero no es que falle: es que se quede pegado
@@ -327,6 +372,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
              una vez, no lo mostramos de nuevo cada 5 minutos */
           if (avisoFuera) { var a2 = elAviso(); if (a2) a2.style.display = 'none'; }
           revisarEdad();   /* el HTML nuevo trae su propia marca de tiempo */
+          ajustar();       /* los datos nuevos pueden ocupar mas lineas */
         }
       } catch(e) {}
     };
