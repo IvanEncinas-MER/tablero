@@ -16,18 +16,27 @@ h1 span{color:#60a5fa}
 .upd{font-size:15px;color:#8296b8}
 .grid{display:grid;grid-template-columns:0.8fr 1.15fr 1.15fr 0.9fr;gap:13px;grid-auto-rows:minmax(0,1fr);height:calc(100vh - 78px)}
 .card{background:#121c30;border:1px solid #1e2a44;border-radius:11px;padding:13px 15px;overflow:hidden;min-height:0}
-.card h2{font-size:13px;text-transform:uppercase;letter-spacing:1.2px;
-color:#8296b8;margin-bottom:9px;font-weight:600}
+.card h2{font-size:clamp(11px,1.35vh,13px);text-transform:uppercase;letter-spacing:1.2px;
+color:#8296b8;margin-bottom:clamp(4px,.9vh,9px);font-weight:600}
 .card h2 em{font-style:normal;font-weight:400;text-transform:none;
 letter-spacing:0;color:#5b6e8c;margin-left:9px;font-size:11px}
-.big{font-size:50px;font-weight:700;line-height:1}
-.big.sm{font-size:38px}
-.sub{font-size:16px;color:#a9bad4;margin-top:6px}
-.kpis{display:flex;gap:16px;margin-top:11px;flex-wrap:wrap}
-.kpi b{display:block;font-size:23px}
-/* Estas leyendas se veian "en blanco" desde la TV: 12px en gris tenue no se
-   alcanza a leer a varios metros. Mas grandes y con mas contraste. */
-.kpi small{color:#c3d2e8;font-size:15px;white-space:nowrap}
+/* Las leyendas de abajo ("en tiempo", "acciones"...) se estaban CORTANDO en la
+   TV. El navegador de la TV trabaja a 1280x720, no a 1920x1080: la tarjeta
+   solo tiene ~149px de alto y el contenido pedia 243px, asi que el
+   overflow:hidden se comia la ultima fila.
+   Por eso todo lo de estas tarjetas se mide en vh: se encoge con la pantalla
+   en vez de desbordarse. Los clamp() ponen piso y techo para que ni se
+   deforme en monitores grandes ni se vuelva ilegible en chicos. */
+.big{font-size:clamp(30px,4.7vh,50px);font-weight:700;line-height:1}
+.big.sm{font-size:clamp(24px,3.6vh,38px)}
+.sub{font-size:clamp(12px,1.55vh,16px);color:#a9bad4;margin-top:clamp(3px,.6vh,6px)}
+/* nowrap: con 3 leyendas en una columna angosta se envolvian a dos lineas y
+   eso era justo lo que desbordaba la tarjeta. */
+.kpis{display:flex;gap:clamp(7px,1.1vw,16px);margin-top:clamp(5px,1.1vh,11px);
+flex-wrap:nowrap}
+.kpi{min-width:0}
+.kpi b{display:block;font-size:clamp(16px,2.3vh,23px);line-height:1.15}
+.kpi small{color:#c3d2e8;font-size:clamp(11px,1.5vh,15px);white-space:nowrap}
 .trend{display:flex;align-items:flex-end;gap:14px;height:calc(100% - 30px);padding-top:4px;justify-content:flex-start;overflow:hidden}
 .tcol{flex:1;max-width:190px;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
 .tval{font-size:17px;font-weight:600;color:#e8eefc;margin-bottom:6px}
@@ -46,7 +55,7 @@ letter-spacing:0;color:#5b6e8c;margin-left:9px;font-size:11px}
 .tv .proy,.tv .quien{color:#8296b8}
 .tv .fec{text-align:right;color:#ef4444;font-variant-numeric:tabular-nums}
 .mas{font-size:13px;color:#8296b8;margin-top:8px}
-.vacio{color:#5b6e8c;font-size:15px;padding:14px 0}
+.vacio{color:#5b6e8c;font-size:clamp(12px,1.5vh,15px);padding:clamp(4px,1.3vh,14px) 0}
 .vacio.ok{color:#22c55e}
 .sub2{font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
 color:#b9c8e2;margin:0 0 7px}
@@ -140,8 +149,8 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 </style></head><body>
 <header>
   <h1>Ingenieria <span>/ Tablero</span></h1>
-  <div class="upd">Actualizado 21/08/2026 15:26 &nbsp;·&nbsp;
-    <span id="edad" data-gen="2026-08-21T15:26:01">se refresca solo</span></div>
+  <div class="upd">Actualizado 21/08/2026 15:33 &nbsp;·&nbsp;
+    <span id="edad" data-gen="2026-08-21T15:33:04">se refresca solo</span></div>
 </header>
 <div class="grid">
 
@@ -186,7 +195,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
     <h2>Avance por proyecto (2 en curso)
       <em>la fecha es la entrega comprometida de cada fase</em>
     </h2>
-    <div class="cols1"><div class="prow phead"><div class="nm">Proyecto</div><div class="oc">Alta trabajo</div><div class="oc">Fecha OC</div><div class="fase"><i></i><div class="bar">Avance BOMs</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion BOMs</u></div><div class="fase"><i></i><div class="bar">Avance planos</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion planos</u></div></div><div class="prow"><div class="nm">TM1371 - BCUCR30VD.2/LVB2CL.M /</div><div class="oc">15 ago</div><div class="oc pend">pendiente</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:42%"></div><div class="fill" style="width:25%;background:#f59e0b"></div></div><b>25%</b><span>d5/12</span><u class="flecha">&rarr;</u><u class="fin">2 sep</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:0%"></div><div class="fill" style="width:0%;background:#22c55e"></div></div><b>0%</b><span>d0/12</span><u class="flecha">&rarr;</u><u class="fin">15 sep</u></div></div><div class="prow"><div class="nm">TM1370 - BCUCR40VD.2/MVF3FL.M /</div><div class="oc">15 ago</div><div class="oc pend">pendiente</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:42%"></div><div class="fill" style="width:25%;background:#f59e0b"></div></div><b>25%</b><span>d5/12</span><u class="flecha">&rarr;</u><u class="fin">2 sep</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:0%"></div><div class="fill" style="width:0%;background:#22c55e"></div></div><b>0%</b><span>d0/12</span><u class="flecha">&rarr;</u><u class="fin">15 sep</u></div></div></div>
+    <div class="cols1"><div class="prow phead"><div class="nm">Proyecto</div><div class="oc">Alta trabajo</div><div class="oc">Fecha OC</div><div class="fase"><i></i><div class="bar">Avance BOMs</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion BOMs</u></div><div class="fase"><i></i><div class="bar">Avance planos</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion planos</u></div></div><div class="prow"><div class="nm">TM1371 - BCUCR30VD.2/LVB2CL.M /</div><div class="oc">15 ago</div><div class="oc">13 ago</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:42%"></div><div class="fill" style="width:25%;background:#f59e0b"></div></div><b>25%</b><span>d5/12</span><u class="flecha">&rarr;</u><u class="fin">29 ago</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:0%"></div><div class="fill" style="width:0%;background:#22c55e"></div></div><b>0%</b><span>d0/12</span><u class="flecha">&rarr;</u><u class="fin">9 sep</u></div></div><div class="prow"><div class="nm">TM1370 - BCUCR40VD.2/MVF3FL.M /</div><div class="oc">15 ago</div><div class="oc">13 ago</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:42%"></div><div class="fill" style="width:25%;background:#f59e0b"></div></div><b>25%</b><span>d5/12</span><u class="flecha">&rarr;</u><u class="fin">29 ago</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:0%"></div><div class="fill" style="width:0%;background:#22c55e"></div></div><b>0%</b><span>d0/12</span><u class="flecha">&rarr;</u><u class="fin">9 sep</u></div></div></div>
   </div>
 
 </div>
