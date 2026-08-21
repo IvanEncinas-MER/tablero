@@ -22,10 +22,12 @@ color:#8296b8;margin-bottom:9px;font-weight:600}
 letter-spacing:0;color:#5b6e8c;margin-left:9px;font-size:11px}
 .big{font-size:50px;font-weight:700;line-height:1}
 .big.sm{font-size:38px}
-.sub{font-size:15px;color:#8296b8;margin-top:6px}
+.sub{font-size:16px;color:#a9bad4;margin-top:6px}
 .kpis{display:flex;gap:16px;margin-top:11px;flex-wrap:wrap}
 .kpi b{display:block;font-size:23px}
-.kpi small{color:#8296b8;font-size:12px;white-space:nowrap}
+/* Estas leyendas se veian "en blanco" desde la TV: 12px en gris tenue no se
+   alcanza a leer a varios metros. Mas grandes y con mas contraste. */
+.kpi small{color:#c3d2e8;font-size:15px;white-space:nowrap}
 .trend{display:flex;align-items:flex-end;gap:14px;height:calc(100% - 30px);padding-top:4px;justify-content:flex-start;overflow:hidden}
 .tcol{flex:1;max-width:190px;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
 .tval{font-size:17px;font-weight:600;color:#e8eefc;margin-bottom:6px}
@@ -84,10 +86,14 @@ font-variant-numeric:tabular-nums;flex:0 0 auto}
 .etp{width:150px;font-size:12px;color:#8296b8;flex:0 0 auto;
 white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .flecha{text-decoration:none;color:#5b6e8c;font-size:13px;width:14px;text-align:center}
-/* Las 3 columnas de FECHA se resaltan igual para que se lean como un grupo:
-   alta de trabajo, liberacion de BOMs y liberacion de planos. */
+/* Las 4 columnas de FECHA se resaltan igual para que se lean como un grupo:
+   alta de trabajo, fecha OC, liberacion de BOMs y liberacion de planos. */
 .oc,.fase .fin{background:rgba(125,211,252,.10);border:1px solid rgba(125,211,252,.22);
 border-radius:5px;padding:3px 7px;color:#7dd3fc;text-align:center}
+/* La Fecha OC la captura Ivan a mano cuando ventas se la pasa: mientras no
+   llegue se marca como pendiente, sin gritar, para no confundirla con retraso. */
+.oc.pend{background:none;border-style:dashed;border-color:#2c3e5e;color:#5b6e8c;
+font-weight:400;font-style:italic}
 .fase .fin.venc{background:rgba(239,68,68,.14);border-color:rgba(239,68,68,.40);color:#ef4444}
 .fase .fin.off{background:none;border-color:transparent;color:#3d4c66}
 .phead .oc,.phead .fin{background:rgba(125,211,252,.07);
@@ -134,8 +140,8 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 </style></head><body>
 <header>
   <h1>Ingenieria <span>/ Tablero</span></h1>
-  <div class="upd">Actualizado 21/08/2026 14:45 &nbsp;·&nbsp;
-    <span id="edad" data-gen="2026-08-21T14:45:43">se refresca solo</span></div>
+  <div class="upd">Actualizado 21/08/2026 15:10 &nbsp;·&nbsp;
+    <span id="edad" data-gen="2026-08-21T15:10:46">se refresca solo</span></div>
 </header>
 <div class="grid">
 
@@ -180,7 +186,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
     <h2>Avance por proyecto (2 en curso)
       <em>la fecha es la entrega comprometida de cada fase</em>
     </h2>
-    <div class="cols1"><div class="prow phead"><div class="nm">Proyecto</div><div class="oc">Alta trabajo</div><div class="fase"><i></i><div class="bar">Avance BOMs</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion BOMs</u></div><div class="fase"><i></i><div class="bar">Avance planos</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion planos</u></div></div><div class="prow"><div class="nm">TM1371 - BCUCR30VD.2/LVB2CL.M /</div><div class="oc">OC 15 ago</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:50%"></div><div class="fill" style="width:25%;background:#ef4444"></div></div><b>25%</b><span>d6/12</span><u class="flecha">&rarr;</u><u class="fin">27 ago</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:0%"></div><div class="fill" style="width:0%;background:#22c55e"></div></div><b>0%</b><span>d0/12</span><u class="flecha">&rarr;</u><u class="fin">5 sep</u></div></div><div class="prow"><div class="nm">TM1370 - BCUCR40VD.2/MVF3FL.M /</div><div class="oc">OC 15 ago</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:50%"></div><div class="fill" style="width:25%;background:#ef4444"></div></div><b>25%</b><span>d6/12</span><u class="flecha">&rarr;</u><u class="fin">27 ago</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:0%"></div><div class="fill" style="width:0%;background:#22c55e"></div></div><b>0%</b><span>d0/12</span><u class="flecha">&rarr;</u><u class="fin">5 sep</u></div></div></div>
+    <div class="cols1"><div class="prow phead"><div class="nm">Proyecto</div><div class="oc">Alta trabajo</div><div class="oc">Fecha OC</div><div class="fase"><i></i><div class="bar">Avance BOMs</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion BOMs</u></div><div class="fase"><i></i><div class="bar">Avance planos</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion planos</u></div></div><div class="prow"><div class="nm">TM1371 - BCUCR30VD.2/LVB2CL.M /</div><div class="oc">15 ago</div><div class="oc pend">pendiente</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:42%"></div><div class="fill" style="width:25%;background:#f59e0b"></div></div><b>25%</b><span>d5/12</span><u class="flecha">&rarr;</u><u class="fin">2 sep</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:0%"></div><div class="fill" style="width:0%;background:#22c55e"></div></div><b>0%</b><span>d0/12</span><u class="flecha">&rarr;</u><u class="fin">15 sep</u></div></div><div class="prow"><div class="nm">TM1370 - BCUCR40VD.2/MVF3FL.M /</div><div class="oc">15 ago</div><div class="oc pend">pendiente</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:42%"></div><div class="fill" style="width:25%;background:#f59e0b"></div></div><b>25%</b><span>d5/12</span><u class="flecha">&rarr;</u><u class="fin">2 sep</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:0%"></div><div class="fill" style="width:0%;background:#22c55e"></div></div><b>0%</b><span>d0/12</span><u class="flecha">&rarr;</u><u class="fin">15 sep</u></div></div></div>
   </div>
 
 </div>
