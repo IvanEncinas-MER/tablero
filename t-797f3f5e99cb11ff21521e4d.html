@@ -126,13 +126,16 @@ border-top:5px solid #fff}
 .trend.inc .tcol{max-width:110px}
 .pend{margin-top:14px;padding-top:12px;border-top:1px dashed #24334f;
 font-size:13px;color:#5b6e8c}
+#edad.viejo{color:#0b1220;background:#f59e0b;font-weight:700;
+padding:3px 12px;border-radius:999px}
 #fshint{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);
 background:#16233b;border:1px solid #2c3e5e;color:#93a7c4;padding:9px 20px;
 border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 </style></head><body>
 <header>
   <h1>Ingenieria <span>/ Tablero</span></h1>
-  <div class="upd">Actualizado 21/08/2026 13:32 &nbsp;·&nbsp; se refresca solo</div>
+  <div class="upd">Actualizado 21/08/2026 13:35 &nbsp;·&nbsp;
+    <span id="edad" data-gen="2026-08-21T13:35:26">se refresca solo</span></div>
 </header>
 <div class="grid">
 
@@ -222,6 +225,29 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
     setTimeout(ocultarAviso, 20000);
   }
 
+  /* Aviso de datos congelados.
+     El riesgo real de este tablero no es que falle: es que se quede pegado
+     mostrando numeros viejos que parecen actuales (PC apagada, fin de semana,
+     token vencido). Que la propia pagina lo grite. */
+  function revisarEdad(){
+    var e = document.getElementById('edad');
+    if (!e) return;
+    var gen = new Date(e.getAttribute('data-gen'));
+    if (isNaN(gen.getTime())) return;
+    var min = Math.floor((new Date().getTime() - gen.getTime()) / 60000);
+    if (min < 45) {                 /* 3 ciclos perdidos; margen para un tropiezo */
+      e.className = '';
+      e.textContent = 'se refresca solo';
+      return;
+    }
+    e.className = 'viejo';
+    if (min < 120)      e.textContent = 'SIN ACTUALIZAR hace ' + min + ' min';
+    else if (min < 2880) e.textContent = 'SIN ACTUALIZAR hace ' + Math.floor(min/60) + ' h';
+    else                 e.textContent = 'SIN ACTUALIZAR hace ' + Math.floor(min/1440) + ' dias';
+  }
+  revisarEdad();
+  setInterval(revisarEdad, 60000);
+
   /* En las TV el control remoto manda codigos distintos segun la marca, asi
      que aceptamos cualquier tecla en vez de adivinar cual es "OK". */
   document.addEventListener('click', aPantallaCompleta);
@@ -251,6 +277,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
           /* el aviso vuelve a aparecer con el HTML nuevo: si ya lo quitamos
              una vez, no lo mostramos de nuevo cada 5 minutos */
           if (avisoFuera) { var a2 = elAviso(); if (a2) a2.style.display = 'none'; }
+          revisarEdad();   /* el HTML nuevo trae su propia marca de tiempo */
         }
       } catch(e) {}
     };
