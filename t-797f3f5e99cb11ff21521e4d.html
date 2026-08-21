@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es"><head>
 <meta charset="utf-8">
-<meta http-equiv="refresh" content="300">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="referrer" content="no-referrer">
 <title>Ingenieria - Tablero</title>
@@ -126,10 +126,13 @@ border-top:5px solid #fff}
 .trend.inc .tcol{max-width:110px}
 .pend{margin-top:14px;padding-top:12px;border-top:1px dashed #24334f;
 font-size:13px;color:#5b6e8c}
+#fshint{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);
+background:#16233b;border:1px solid #2c3e5e;color:#93a7c4;padding:9px 20px;
+border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 </style></head><body>
 <header>
   <h1>Ingenieria <span>/ Tablero</span></h1>
-  <div class="upd">Actualizado 21/08/2026 11:52 &nbsp;·&nbsp; se refresca solo</div>
+  <div class="upd">Actualizado 21/08/2026 12:01 &nbsp;·&nbsp; se refresca solo</div>
 </header>
 <div class="grid">
 
@@ -177,4 +180,70 @@ font-size:13px;color:#5b6e8c}
     <div class="cols1"><div class="prow phead"><div class="nm">Proyecto</div><div class="oc">Alta trabajo</div><div class="fase"><i></i><div class="bar">Avance BOMs</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion BOMs</u></div><div class="fase"><i></i><div class="bar">Avance planos</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion planos</u></div></div><div class="prow"><div class="nm">TM1371 - BCUCR30VD.2/LVB2CL.M /</div><div class="oc">OC 15 ago</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:50%"></div><div class="fill" style="width:25%;background:#ef4444"></div></div><b>25%</b><span>d6/12</span><u class="flecha">&rarr;</u><u class="fin">27 ago</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:0%"></div><div class="fill" style="width:0%;background:#22c55e"></div></div><b>0%</b><span>d0/12</span><u class="flecha">&rarr;</u><u class="fin">5 sep</u></div></div><div class="prow"><div class="nm">TM1370 - BCUCR40VD.2/MVF3FL.M /</div><div class="oc">OC 15 ago</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:50%"></div><div class="fill" style="width:25%;background:#ef4444"></div></div><b>25%</b><span>d6/12</span><u class="flecha">&rarr;</u><u class="fin">27 ago</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:0%"></div><div class="fill" style="width:0%;background:#22c55e"></div></div><b>0%</b><span>d0/12</span><u class="flecha">&rarr;</u><u class="fin">5 sep</u></div></div></div>
   </div>
 
-</div></body></html>
+</div>
+<div id="fshint">Presiona OK (o toca la pantalla) para verlo completo</div>
+<script>
+/* Pensado para el navegador de la TV, que no tiene tecla F11.
+   Escrito a proposito en JS "viejito": los navegadores de las TV
+   suelen ir varios anios atrasados. */
+(function(){
+  var SEG = 300;
+  var raiz = document.documentElement;
+  var fallos = 0;
+
+  var pedir = raiz.requestFullscreen || raiz.webkitRequestFullscreen ||
+              raiz.mozRequestFullScreen || raiz.msRequestFullscreen;
+
+  function completa(){
+    return document.fullscreenElement || document.webkitFullscreenElement ||
+           document.mozFullScreenElement || document.msFullscreenElement;
+  }
+  function ocultarAviso(){
+    var a = document.getElementById('fshint');
+    if (a) a.style.display = 'none';
+  }
+  function aPantallaCompleta(){
+    ocultarAviso();
+    if (!pedir || completa()) return;
+    try { pedir.call(raiz); } catch(e) {}
+  }
+
+  /* Si la TV ni siquiera soporta pantalla completa, no dejamos el aviso
+     colgado para siempre. */
+  if (!pedir) setTimeout(ocultarAviso, 8000);
+
+  document.addEventListener('click', aPantallaCompleta);
+  document.addEventListener('keydown', function(ev){
+    if (ev.keyCode === 13 || ev.keyCode === 32) aPantallaCompleta();
+  });
+
+  /* Refresco SIN recargar la pagina: una recarga normal saca del modo
+     pantalla completa, y en la TV no hay como volver a entrar sin que
+     alguien vaya a presionar OK. */
+  function refrescar(){
+    var x = new XMLHttpRequest();
+    var sep = location.href.indexOf('?') > -1 ? '&' : '?';
+    x.open('GET', location.href + sep + '_t=' + new Date().getTime(), true);
+    x.onreadystatechange = function(){
+      if (x.readyState !== 4) return;
+      if (x.status !== 200) {
+        /* Sin internet o GitHub caido: se deja lo ultimo bueno en pantalla.
+           Si insiste en fallar, recargamos por si el problema es la pagina. */
+        if (++fallos >= 4) location.reload();
+        return;
+      }
+      fallos = 0;
+      try {
+        var doc = new DOMParser().parseFromString(x.responseText, 'text/html');
+        if (doc && doc.body) {
+          document.body.innerHTML = doc.body.innerHTML;
+          if (completa()) ocultarAviso();
+        }
+      } catch(e) {}
+    };
+    x.send();
+  }
+  setInterval(refrescar, SEG * 1000);
+})();
+</script>
+</body></html>
