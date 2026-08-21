@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Diagnostico TV</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0b1220;color:#e8eefc;font-family:'Segoe UI',system-ui,sans-serif;padding:14px}
+h1{font-size:22px;margin-bottom:10px;color:#60a5fa}
+.bloque{background:#121c30;border:1px solid #1e2a44;border-radius:8px;
+padding:10px 12px;margin-bottom:10px}
+.t{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:#8296b8;margin-bottom:6px}
+#datos{font-family:monospace;font-size:15px;line-height:1.6;white-space:pre-wrap;color:#7dd3fc}
+.pruebas{display:flex;gap:10px;flex-wrap:wrap}
+.p{background:#0f1830;border:1px solid #24334f;border-radius:8px;padding:8px 10px;
+width:210px;height:104px;overflow:hidden;position:relative}
+.et{font-size:12px;color:#f59e0b;font-weight:700;margin-bottom:4px}
+.veredicto{font-family:monospace;font-size:14px;margin-top:6px;color:#22c55e}
+/* A: apilado con clamp  (lo que fallaba) */
+.A b{display:block;font-size:clamp(16px,2.3vh,23px)}
+.A small{color:#c3d2e8;font-size:clamp(11px,1.5vh,15px)}
+/* B: apilado con px fijos */
+.B b{display:block;font-size:22px}
+.B small{color:#c3d2e8;font-size:14px}
+/* C: misma linea, inline-block  (lo que publique ahora) */
+.C .kpi{display:inline-block;white-space:nowrap;margin-right:12px}
+.C b{font-size:22px;margin-right:5px}
+.C small{color:#c3d2e8;font-size:14px}
+/* D: misma linea, sin <small>, todo en un span */
+.D .kpi{display:inline-block;white-space:nowrap;margin-right:12px}
+.D b{font-size:22px;margin-right:5px}
+.D span{color:#c3d2e8;font-size:14px}
+</style></head><body>
+
+<h1>Diagnostico del navegador de la TV</h1>
+
+<div class="bloque">
+  <div class="t">Que soporta este navegador</div>
+  <div id="datos">midiendo...</div>
+</div>
+
+<div class="bloque">
+  <div class="t">Cuatro formas de dibujar la leyenda</div>
+  <div class="pruebas">
+    <div class="p A" id="pA"><div class="et">A - apilado + clamp</div>
+      <div class="kpi"><b style="color:#22c55e">10</b><small>en tiempo</small></div>
+      <div class="veredicto"></div></div>
+
+    <div class="p B" id="pB"><div class="et">B - apilado + px</div>
+      <div class="kpi"><b style="color:#22c55e">10</b><small>en tiempo</small></div>
+      <div class="veredicto"></div></div>
+
+    <div class="p C" id="pC"><div class="et">C - misma linea + small</div>
+      <div class="kpi"><b style="color:#22c55e">10</b><small>en tiempo</small></div>
+      <div class="veredicto"></div></div>
+
+    <div class="p D" id="pD"><div class="et">D - misma linea + span</div>
+      <div class="kpi"><b style="color:#22c55e">10</b><span>en tiempo</span></div>
+      <div class="veredicto"></div></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  function sop(p,v){
+    try{ return (window.CSS&&CSS.supports&&CSS.supports(p,v))?'SI':'NO'; }
+    catch(e){ return 'no se puede probar'; }
+  }
+  var L=[];
+  L.push('pantalla   : '+screen.width+' x '+screen.height);
+  L.push('ventana    : '+window.innerWidth+' x '+window.innerHeight);
+  L.push('zoom (dpr) : '+(window.devicePixelRatio||1));
+  L.push('clamp()    : '+sop('font-size','clamp(10px,2vh,20px)'));
+  L.push('gap flex   : '+sop('gap','10px'));
+  L.push('unidad vh  : '+sop('height','10vh'));
+  L.push('flex-wrap  : '+sop('flex-wrap','wrap'));
+  L.push('navegador  : '+navigator.userAgent);
+  document.getElementById('datos').textContent=L.join('\n');
+
+  ['A','B','C','D'].forEach(function(k){
+    var caja=document.getElementById('p'+k);
+    var et=caja.querySelector('small')||caja.querySelector('span');
+    var v=caja.querySelector('.veredicto');
+    if(!et){ v.textContent='no existe'; v.style.color='#ef4444'; return; }
+    var r=et.getBoundingClientRect(), cr=caja.getBoundingClientRect();
+    var cs=getComputedStyle(et);
+    var dentro = r.bottom<=cr.bottom && r.top>=cr.top && r.height>0 && r.width>0;
+    v.textContent=(dentro?'SE VE':'NO SE VE')+'  '+cs.fontSize;
+    v.style.color=dentro?'#22c55e':'#ef4444';
+  });
+})();
+</script>
+</body></html>
