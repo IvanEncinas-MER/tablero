@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<meta name="build" content="423eb35007">
+<meta name="build" content="8d2a6bb2e3">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="referrer" content="no-referrer">
@@ -56,7 +56,11 @@ white-space:nowrap;vertical-align:baseline}
 .tbar{width:100%;border-radius:5px 5px 0 0;flex:0 0 auto}
 .tlab{font-size:14px;color:#8296b8;margin-top:8px;text-align:center}
 .tlab span{display:block;font-size:12px;color:#5b6e8c}
-.row{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+/* El alto de estas filas lo manda el espaciado, no la letra: por eso achicar
+   la fuente no bastaba para que "Carga por persona" cupiera en la TV
+   (ventana real 1280x624, ver TV_VENTANA). Se escala con la altura. */
+.row{display:flex;align-items:center;gap:9px;margin-bottom:7px;
+margin-bottom:clamp(2px,1.1vh,7px)}
 .nm{width:112px;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nm .et{display:block;font-size:11px;color:#8296b8}
 .bar{flex:1;height:13px;background:#1e2a44;border-radius:6px;overflow:hidden}
@@ -75,7 +79,10 @@ padding:14px 0;padding:clamp(4px,1.3vh,14px) 0}
 color:#b9c8e2;margin:0 0 7px}
 .sub2 em{display:block;font-style:normal;font-weight:400;text-transform:none;
 letter-spacing:0;color:#5b6e8c;margin-left:0;margin-top:1px;font-size:10px}
-.sub2.sep{margin-top:12px;padding-top:10px;border-top:1px solid #1e2a44}
+/* variante de un solo renglon, para cuando no hay nada que listar */
+.sub2.compacta em{display:inline;margin-left:7px}
+.sub2.sep{margin-top:12px;margin-top:clamp(4px,1.6vh,12px);
+padding-top:10px;padding-top:clamp(4px,1.3vh,10px);border-top:1px solid #1e2a44}
 .wide{grid-column:span 2}
 .mid{grid-column:span 2}
 .full{grid-column:1/-1}
@@ -171,8 +178,8 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 </style></head><body>
 <header>
   <h1>Ingenieria <span>/ Tablero</span></h1>
-  <div class="upd">Actualizado 21/08/2026 16:56 &nbsp;·&nbsp;
-    <span id="edad" data-gen="2026-08-21T16:56:48">se refresca solo</span></div>
+  <div class="upd">Actualizado 21/08/2026 17:05 &nbsp;·&nbsp;
+    <span id="edad" data-gen="2026-08-21T17:05:18">se refresca solo</span></div>
 </header>
 <div class="grid">
 
@@ -208,9 +215,9 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
     <div class="sub2">Por mes <em>70 de Ingenieria &nbsp;·&nbsp; 0 sin cerrar</em></div><div class="trend inc"><div class="tcol"><div class="tval">60</div><div class="tbar" style="height:72.0%;background:#a78bfa"></div><div class="tlab">JUL</div></div><div class="tcol"><div class="tval">10</div><div class="tbar" style="height:12.0%;background:#a78bfa"></div><div class="tlab">AUG</div></div></div>
   </div>
 
-  <div class="card">
+  <div class="card ajustable">
     <h2>Carga por persona</h2>
-    <div class="sub2">Ejecucion <em>proyectos abiertos</em></div><div class="row"><div class="nm">Ivan</div><div class="bar"><div class="fill" style="width:100%;background:#60a5fa"></div></div><div class="vl">2</div></div><div class="row"><div class="nm">Andres</div><div class="bar"><div class="fill" style="width:50%;background:#60a5fa"></div></div><div class="vl">1</div></div><div class="row"><div class="nm">Juan</div><div class="bar"><div class="fill" style="width:50%;background:#60a5fa"></div></div><div class="vl">1</div></div><div class="row"><div class="nm">Omar</div><div class="bar"><div class="fill" style="width:50%;background:#60a5fa"></div></div><div class="vl">1</div></div><div class="row"><div class="nm">Daniel</div><div class="bar"><div class="fill" style="width:50%;background:#60a5fa"></div></div><div class="vl">1</div></div><div class="sub2 sep">Revision <em>entregables por aprobar</em></div><div class="vacio">Sin pendientes</div>
+    <div class="sub2">Ejecucion <em>proyectos abiertos</em></div><div class="row"><div class="nm">Ivan</div><div class="bar"><div class="fill" style="width:100%;background:#60a5fa"></div></div><div class="vl">2</div></div><div class="row"><div class="nm">Andres</div><div class="bar"><div class="fill" style="width:50%;background:#60a5fa"></div></div><div class="vl">1</div></div><div class="row"><div class="nm">Juan</div><div class="bar"><div class="fill" style="width:50%;background:#60a5fa"></div></div><div class="vl">1</div></div><div class="row"><div class="nm">Omar</div><div class="bar"><div class="fill" style="width:50%;background:#60a5fa"></div></div><div class="vl">1</div></div><div class="row"><div class="nm">Daniel</div><div class="bar"><div class="fill" style="width:50%;background:#60a5fa"></div></div><div class="vl">1</div></div><div class="sub2 sep compacta">Revision <em>sin pendientes por aprobar</em></div>
   </div>
 
   <div class="card full">
@@ -249,7 +256,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 
   /* Huella de esta version. La usa el <img> de rescate de arriba y el
      refresco de abajo para detectar que la copia en pantalla ya caduco. */
-  window.__BUILD = "423eb35007";
+  window.__BUILD = "8d2a6bb2e3";
 
   var pedir = raiz.requestFullscreen || raiz.webkitRequestFullscreen ||
               raiz.mozRequestFullScreen || raiz.msRequestFullscreen;
@@ -290,19 +297,24 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
      Asi el resultado es correcto en cualquier navegador, incluso en uno que
      nunca pudimos probar. */
   function cabe(c){
+    /* Dos comprobaciones porque se complementan: scrollHeight detecta
+       desbordes normales, y la de abajo atrapa los casos donde un hijo con
+       overflow propio esconde el desborde del contenedor. */
+    if (c.scrollHeight > c.clientHeight + 1) return false;
     var lim = c.getBoundingClientRect().bottom - 2;
-    var ss = c.getElementsByTagName('small');
-    for (var i = 0; i < ss.length; i++) {
-      if (ss[i].getBoundingClientRect().bottom > lim) return false;
+    var hijos = c.querySelectorAll('small,.vacio,.sub2,.nm');
+    for (var i = 0; i < hijos.length; i++) {
+      if (hijos[i].offsetHeight &&
+          hijos[i].getBoundingClientRect().bottom > lim) return false;
     }
     return true;
   }
 
   function ajustar(){
-    var cards = document.querySelectorAll('.colstack .card');
+    var cards = document.querySelectorAll('.colstack .card, .card.ajustable');
     for (var i = 0; i < cards.length; i++) {
       var c = cards[i];
-      var els = c.querySelectorAll('h2,.big,.sub,.kpi b,.kpi small');
+      var els = c.querySelectorAll('h2,.big,.sub,.sub2,.sub2 em,.kpi b,.kpi small,.nm,.vl,.vacio');
       var j;
       for (j = 0; j < els.length; j++) els[j].style.fontSize = '';   /* partir de cero */
       if (cabe(c)) continue;
