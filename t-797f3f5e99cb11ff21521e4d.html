@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<meta name="build" content="6ddda788de">
+<meta name="build" content="3ac96e5e57">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="referrer" content="no-referrer">
@@ -81,6 +81,9 @@ color:#b9c8e2;margin:0 0 7px}
 letter-spacing:0;color:#5b6e8c;margin-left:0;margin-top:1px;font-size:10px}
 /* variante de un solo renglon, para cuando no hay nada que listar */
 .sub2.compacta em{display:inline;margin-left:7px}
+.junta{font-size:14px;font-size:clamp(11px,1.5vh,14px);color:#a9bad4;
+margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.junta b{color:#fbbf24;font-size:16px;font-size:clamp(13px,1.8vh,16px)}
 .sub2.sep{margin-top:12px;margin-top:clamp(4px,1.6vh,12px);
 padding-top:10px;padding-top:clamp(4px,1.3vh,10px);border-top:1px solid #1e2a44}
 .wide{grid-column:span 2}
@@ -178,8 +181,8 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 </style></head><body>
 <header>
   <h1>Ingenieria <span>/ Tablero</span></h1>
-  <div class="upd">Actualizado 28/08/2026 10:45 &nbsp;·&nbsp;
-    <span id="edad" data-gen="2026-08-28T10:45:51">se refresca solo</span></div>
+  <div class="upd">Actualizado 28/08/2026 10:54 &nbsp;·&nbsp;
+    <span id="edad" data-gen="2026-08-28T10:54:10">se refresca solo</span></div>
 </header>
 <div class="grid">
 
@@ -219,7 +222,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 
   <div class="card ajustable">
     <h2>Carga por persona</h2>
-    <div class="sub2">Ejecucion <em>proyectos abiertos</em></div><div class="row"><div class="nm">Juan</div><div class="bar"><div class="fill" style="width:100%;background:#60a5fa"></div></div><div class="vl">1</div></div><div class="row"><div class="nm">Daniel</div><div class="bar"><div class="fill" style="width:100%;background:#60a5fa"></div></div><div class="vl">1</div></div><div class="sub2 sep">Revision <em>entregables por aprobar</em></div><div class="row"><div class="nm">Gabriel</div><div class="bar"><div class="fill" style="width:100%;background:#a78bfa"></div></div><div class="vl">1</div></div>
+    <div class="sub2">Ejecucion <em>proyectos abiertos</em></div><div class="row"><div class="nm">Juan</div><div class="bar"><div class="fill" style="width:100%;background:#60a5fa"></div></div><div class="vl">1</div></div><div class="row"><div class="nm">Daniel</div><div class="bar"><div class="fill" style="width:100%;background:#60a5fa"></div></div><div class="vl">1</div></div><div class="sub2 sep">Revision <em>entregables por aprobar</em></div><div class="row"><div class="nm">Gabriel</div><div class="bar"><div class="fill" style="width:100%;background:#a78bfa"></div></div><div class="vl">1</div></div><div class="sub2 sep compacta">Junta diaria <em>nada esperando aprobacion</em></div>
   </div>
 
   <div class="card full">
@@ -258,7 +261,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 
   /* Huella de esta version. La usa el <img> de rescate de arriba y el
      refresco de abajo para detectar que la copia en pantalla ya caduco. */
-  window.__BUILD = "6ddda788de";
+  window.__BUILD = "3ac96e5e57";
 
   var pedir = raiz.requestFullscreen || raiz.webkitRequestFullscreen ||
               raiz.mozRequestFullScreen || raiz.msRequestFullscreen;
