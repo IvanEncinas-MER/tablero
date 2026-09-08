@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<meta name="build" content="d9ef97aa06">
+<meta name="build" content="bc5934cf24">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="referrer" content="no-referrer">
@@ -169,7 +169,23 @@ border-radius:2px;z-index:3;box-shadow:0 0 0 1px rgba(11,18,32,.9),0 0 7px rgba(
 border-left:4px solid transparent;border-right:4px solid transparent;
 border-top:5px solid #fff}
 .incgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
-.trend.inc{height:calc(100% - 76px)}
+.trend.inc{height:calc(100% - 104px)}
+/* Barra apilada: el fondo es el total del mes y el bloque de abajo, pegado
+   al eje, son las mayores/criticas. Van abajo porque es donde el ojo compara
+   alturas sin tener que restar. */
+.tbar.apil{background:#6d5bd0;position:relative;display:flex;
+align-items:flex-end;overflow:hidden}
+.tbar.apil i{display:block;width:100%;background:#ef4444;
+border-radius:0 0 3px 3px}
+.tval .tg{display:inline-block;margin-left:7px;font-size:13px;
+font-weight:700;color:#ef4444}
+.tval .tg.cero{color:#5b6e8c;font-weight:600}
+.leyi{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;
+font-size:12px;color:#8296b8}
+.leyi span{display:flex;align-items:center;gap:6px}
+.leyi .sw{width:11px;height:11px;border-radius:2px;flex:none}
+.leyi .sw-tot{background:#6d5bd0}
+.leyi .sw-gra{background:#ef4444}
 .trend.inc .tcol{max-width:110px}
 .pend{margin-top:14px;padding-top:12px;border-top:1px dashed #24334f;
 font-size:13px;color:#5b6e8c}
@@ -181,8 +197,8 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 </style></head><body>
 <header>
   <h1>Ingenieria <span>/ Tablero</span></h1>
-  <div class="upd">Actualizado 08/09/2026 15:52 &nbsp;·&nbsp;
-    <span id="edad" data-gen="2026-09-08T15:52:39">se refresca solo</span></div>
+  <div class="upd">Actualizado 08/09/2026 16:03 &nbsp;·&nbsp;
+    <span id="edad" data-gen="2026-09-08T16:03:07">se refresca solo</span></div>
 </header>
 <div class="grid">
 
@@ -217,7 +233,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 
   <div class="card">
     <h2>Bitacora de incidencias <em>origen Ing. mecanica / electrica</em></h2>
-    <div class="sub2">Por mes <em>92 de Ingenieria &nbsp;·&nbsp; 0 sin cerrar</em></div><div class="trend inc"><div class="tcol"><div class="tval">60</div><div class="tbar" style="height:72.0%;background:#a78bfa"></div><div class="tlab">JUL</div></div><div class="tcol"><div class="tval">28</div><div class="tbar" style="height:33.6%;background:#a78bfa"></div><div class="tlab">AUG</div></div><div class="tcol"><div class="tval">4</div><div class="tbar" style="height:4.8%;background:#a78bfa"></div><div class="tlab">SEP</div></div></div>
+    <div class="sub2">Por mes <em>92 de Ingenieria &nbsp;·&nbsp; 22 mayores/criticas &nbsp;·&nbsp; 0 sin cerrar</em></div><div class="trend inc"><div class="tcol"><div class="tval">60<span class="tg">12</span></div><div class="tbar apil" style="height:72.0%"><i style="height:20.0%"></i></div><div class="tlab">JUL</div></div><div class="tcol"><div class="tval">28<span class="tg">9</span></div><div class="tbar apil" style="height:33.6%"><i style="height:32.1%"></i></div><div class="tlab">AUG</div></div><div class="tcol"><div class="tval">4<span class="tg">1</span></div><div class="tbar apil" style="height:4.8%"><i style="height:25.0%"></i></div><div class="tlab">SEP</div></div></div><div class="leyi"><span><i class="sw sw-tot"></i>Total Ingenieria</span><span><i class="sw sw-gra"></i>Mayor o critica &mdash; paro en produccion</span></div>
   </div>
 
   <div class="card ajustable">
@@ -261,7 +277,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 
   /* Huella de esta version. La usa el <img> de rescate de arriba y el
      refresco de abajo para detectar que la copia en pantalla ya caduco. */
-  window.__BUILD = "d9ef97aa06";
+  window.__BUILD = "bc5934cf24";
 
   var pedir = raiz.requestFullscreen || raiz.webkitRequestFullscreen ||
               raiz.mozRequestFullScreen || raiz.msRequestFullscreen;
