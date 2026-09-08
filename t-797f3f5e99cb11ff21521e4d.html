@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<meta name="build" content="bc5934cf24">
+<meta name="build" content="fedf80dbda">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="referrer" content="no-referrer">
@@ -56,6 +56,23 @@ white-space:nowrap;vertical-align:baseline}
 .tbar{width:100%;border-radius:5px 5px 0 0;flex:0 0 auto}
 .tlab{font-size:14px;color:#8296b8;margin-top:8px;text-align:center}
 .tlab span{display:block;font-size:12px;color:#5b6e8c}
+/* Tendencia OTD con DOS series. Barras pareadas y no encimadas: el externo
+   puede ser peor que el interno y una encima de otra escondia justo eso. */
+.trend.dobles{height:calc(100% - 66px)}
+.trend.dobles .tcol{max-width:170px}
+.trend.dobles .par{display:flex;align-items:flex-end;justify-content:center;
+gap:5px;width:100%;height:100%}
+.par1{flex:1;max-width:46px;height:100%;display:flex;flex-direction:column;
+align-items:center;justify-content:flex-end}
+.par1 .tval{font-size:14px;margin-bottom:4px}
+.par1 .tval.sin{color:#5b6e8c}
+.par1 .tn{font-size:11px;color:#5b6e8c;margin-top:3px}
+.tbar.b-int{background:#38bdf8}
+.tbar.b-ext{background:#f59e0b}
+.tbar.vacia{height:3px;background:#2c3e5e}
+.leyt{margin:0 0 6px;margin-top:0}
+.leyi .sw-int{background:#38bdf8}
+.leyi .sw-ext{background:#f59e0b}
 /* El alto de estas filas lo manda el espaciado, no la letra: por eso achicar
    la fuente no bastaba para que "Carga por persona" cupiera en la TV
    (ventana real 1280x624, ver TV_VENTANA). Se escala con la altura. */
@@ -169,7 +186,7 @@ border-radius:2px;z-index:3;box-shadow:0 0 0 1px rgba(11,18,32,.9),0 0 7px rgba(
 border-left:4px solid transparent;border-right:4px solid transparent;
 border-top:5px solid #fff}
 .incgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
-.trend.inc{height:calc(100% - 104px)}
+.trend.inc{height:calc(100% - 96px)}
 /* Barra apilada: el fondo es el total del mes y el bloque de abajo, pegado
    al eje, son las mayores/criticas. Van abajo porque es donde el ojo compara
    alturas sin tener que restar. */
@@ -180,8 +197,8 @@ border-radius:0 0 3px 3px}
 .tval .tg{display:inline-block;margin-left:7px;font-size:13px;
 font-weight:700;color:#ef4444}
 .tval .tg.cero{color:#5b6e8c;font-weight:600}
-.leyi{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;
-font-size:12px;color:#8296b8}
+.leyi{display:flex;gap:14px;flex-wrap:nowrap;margin-top:7px;
+font-size:11.5px;color:#8296b8;white-space:nowrap;overflow:hidden}
 .leyi span{display:flex;align-items:center;gap:6px}
 .leyi .sw{width:11px;height:11px;border-radius:2px;flex:none}
 .leyi .sw-tot{background:#6d5bd0}
@@ -197,8 +214,8 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 </style></head><body>
 <header>
   <h1>Ingenieria <span>/ Tablero</span></h1>
-  <div class="upd">Actualizado 08/09/2026 16:13 &nbsp;·&nbsp;
-    <span id="edad" data-gen="2026-09-08T16:13:24">se refresca solo</span></div>
+  <div class="upd">Actualizado 08/09/2026 16:22 &nbsp;·&nbsp;
+    <span id="edad" data-gen="2026-09-08T16:22:25">se refresca solo</span></div>
 </header>
 <div class="grid">
 
@@ -228,12 +245,12 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 
   <div class="card">
     <h2>Tendencia OTD (ultimos meses)</h2>
-    <div class="trend"><div class="tcol"><div class="tval">90%</div><div class="tbar" style="height:65.1%;background:#22c55e"></div><div class="tlab">AUG<span>21</span></div></div><div class="tcol"><div class="tval">67%</div><div class="tbar" style="height:48.0%;background:#f59e0b"></div><div class="tlab">SEP<span>3</span></div></div></div>
+    <div class="leyi leyt"><span><i class="sw sw-int"></i>Interno: entregables</span><span><i class="sw sw-ext"></i>Externo: liberacion a produccion (100% &middot; 1/1)</span></div><div class="trend dobles"><div class="tcol"><div class="par"><div class="par1"><div class="tval">90%</div><div class="tbar b-int" style="height:54.3%"></div><div class="tn">21</div></div><div class="par1"><div class="tval">100%</div><div class="tbar b-ext" style="height:60.0%"></div><div class="tn">1</div></div></div><div class="tlab">AUG</div></div><div class="tcol"><div class="par"><div class="par1"><div class="tval">67%</div><div class="tbar b-int" style="height:40.0%"></div><div class="tn">3</div></div><div class="par1"><div class="tval sin">&mdash;</div><div class="tbar vacia"></div></div></div><div class="tlab">SEP</div></div></div>
   </div>
 
   <div class="card">
     <h2>Bitacora de incidencias <em>origen Ing. mecanica / electrica</em></h2>
-    <div class="sub2">Por mes <em>92 de Ingenieria &nbsp;·&nbsp; 22 mayores/criticas &nbsp;·&nbsp; 0 sin cerrar</em></div><div class="trend inc"><div class="tcol"><div class="tval">60<span class="tg">12</span></div><div class="tbar apil" style="height:72.0%"><i style="height:20.0%"></i></div><div class="tlab">JUL</div></div><div class="tcol"><div class="tval">28<span class="tg">9</span></div><div class="tbar apil" style="height:33.6%"><i style="height:32.1%"></i></div><div class="tlab">AUG</div></div><div class="tcol"><div class="tval">4<span class="tg">1</span></div><div class="tbar apil" style="height:4.8%"><i style="height:25.0%"></i></div><div class="tlab">SEP</div></div></div><div class="leyi"><span><i class="sw sw-tot"></i>Total Ingenieria</span><span><i class="sw sw-gra"></i>Mayor o critica &mdash; paro en produccion</span></div>
+    <div class="sub2">Por mes <em>92 de Ingenieria &nbsp;·&nbsp; 22 mayores/criticas &nbsp;·&nbsp; 0 sin cerrar</em></div><div class="trend inc"><div class="tcol"><div class="tval">60<span class="tg">12</span></div><div class="tbar apil" style="height:58.0%"><i style="height:20.0%"></i></div><div class="tlab">JUL</div></div><div class="tcol"><div class="tval">28<span class="tg">9</span></div><div class="tbar apil" style="height:27.1%"><i style="height:32.1%"></i></div><div class="tlab">AUG</div></div><div class="tcol"><div class="tval">4<span class="tg">1</span></div><div class="tbar apil" style="height:3.9%"><i style="height:25.0%"></i></div><div class="tlab">SEP</div></div></div><div class="leyi"><span><i class="sw sw-tot"></i>Total</span><span><i class="sw sw-gra"></i>Mayor o critica: paran produccion</span></div>
   </div>
 
   <div class="card ajustable">
@@ -277,7 +294,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 
   /* Huella de esta version. La usa el <img> de rescate de arriba y el
      refresco de abajo para detectar que la copia en pantalla ya caduco. */
-  window.__BUILD = "bc5934cf24";
+  window.__BUILD = "fedf80dbda";
 
   var pedir = raiz.requestFullscreen || raiz.webkitRequestFullscreen ||
               raiz.mozRequestFullScreen || raiz.msRequestFullscreen;
