@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<meta name="build" content="f5801ebda4">
+<meta name="build" content="8bc6831b3f">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="referrer" content="no-referrer">
@@ -123,7 +123,7 @@ padding-top:10px;padding-top:clamp(4px,1.3vh,10px);border-top:1px solid #1e2a44}
 .phead{font-size:10px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;
 color:#7d90ad;border-bottom:1px solid #24334f !important;padding-bottom:5px !important;
 margin-bottom:7px !important}
-.phead .bar{background:none;height:auto;color:#7d90ad}
+.phead .bar{background:none;height:auto;color:#7d90ad;white-space:nowrap}
 .phead .nm,.phead .oc,.phead .etp,.phead b,.phead span,.phead .fin{
 color:#7d90ad;font-size:10px;font-weight:700;letter-spacing:0;white-space:nowrap}
 .phead .fin{white-space:normal;line-height:1.15}
@@ -198,8 +198,9 @@ border-radius:0 0 3px 3px}
 .tval .tg{display:inline-block;margin-left:7px;font-size:13px;
 font-weight:700;color:#ef4444}
 .tval .tg.cero{color:#5b6e8c;font-weight:600}
-.leyi{display:flex;gap:14px;flex-wrap:nowrap;margin-top:7px;
-font-size:11.5px;color:#8296b8;white-space:nowrap;overflow:hidden}
+.leyi{display:flex;gap:10px;flex-wrap:nowrap;margin-top:7px;
+font-size:11px;color:#8296b8;white-space:nowrap;overflow:hidden}
+.leyi span{min-width:0;overflow:hidden;text-overflow:ellipsis}
 .leyi span{display:flex;align-items:center;gap:6px}
 .leyi .sw{width:11px;height:11px;border-radius:2px;flex:none}
 .leyi .sw-tot{background:#6d5bd0}
@@ -215,8 +216,8 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 </style></head><body>
 <header>
   <h1>Ingenieria <span>/ Tablero</span></h1>
-  <div class="upd">Actualizado 08/09/2026 16:44 &nbsp;·&nbsp;
-    <span id="edad" data-gen="2026-09-08T16:44:23">se refresca solo</span></div>
+  <div class="upd">Actualizado 08/09/2026 16:48 &nbsp;·&nbsp;
+    <span id="edad" data-gen="2026-09-08T16:48:15">se refresca solo</span></div>
 </header>
 <div class="grid">
 
@@ -246,7 +247,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 
   <div class="card">
     <h2>Tendencia OTD (ultimos meses)</h2>
-    <div class="leyi leyt"><span><i class="sw sw-int"></i>Interno: entregables</span><span><i class="sw sw-ext"></i>Externo: liberacion a produccion (100% &middot; 1/1)</span></div><div class="trend dobles"><div class="tcol"><div class="par"><div class="par1"><div class="tval">90%</div><div class="tbar b-int" style="height:54.3%"></div><div class="tn">21</div></div><div class="par1"><div class="tval">100%</div><div class="tbar b-ext" style="height:60.0%"></div><div class="tn">1</div></div></div><div class="tlab">AUG</div></div><div class="tcol"><div class="par"><div class="par1"><div class="tval">67%</div><div class="tbar b-int" style="height:40.0%"></div><div class="tn">3</div></div><div class="par1"><div class="tval sin">&mdash;</div><div class="tbar vacia"></div></div></div><div class="tlab">SEP</div></div></div>
+    <div class="leyi leyt"><span><i class="sw sw-int"></i>Interno &middot; entregables</span><span><i class="sw sw-ext"></i>Externo &middot; a produccion 100% &middot; 1/1</span></div><div class="trend dobles"><div class="tcol"><div class="par"><div class="par1"><div class="tval">90%</div><div class="tbar b-int" style="height:54.3%"></div><div class="tn">21</div></div><div class="par1"><div class="tval">100%</div><div class="tbar b-ext" style="height:60.0%"></div><div class="tn">1</div></div></div><div class="tlab">AUG</div></div><div class="tcol"><div class="par"><div class="par1"><div class="tval">67%</div><div class="tbar b-int" style="height:40.0%"></div><div class="tn">3</div></div><div class="par1"><div class="tval sin">&mdash;</div><div class="tbar vacia"></div></div></div><div class="tlab">SEP</div></div></div>
   </div>
 
   <div class="card">
@@ -263,7 +264,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
     <h2>Avance por proyecto (3 en curso) <span class="ok2">&middot; 10 ya en produccion</span>
       <em>la fecha es la entrega comprometida de cada fase</em>
     </h2>
-    <div class="cols1"><div class="prow phead"><div class="nm">Proyecto</div><div class="oc">Fecha OC</div><div class="oc">Alta trabajo</div><div class="fase"><i></i><div class="bar">Avance BOMs</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion BOMs</u></div><div class="fase"><i></i><div class="bar">Avance planos</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion planos</u></div></div><div class="prow"><div class="nm">T7061 - FBO-BUCBR0901H6D /</div><div class="oc">24 jul</div><div class="oc">27 ago</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:83%"></div><div class="fill" style="width:0%;background:#ef4444"></div></div><b>0%</b><span>d10/12</span><u class="flecha">&rarr;</u><u class="fin">10 sep</u></div><div class="fase off"><i>PLANOS</i><div class="bar"></div><b>-</b><span>n/a</span><u class="flecha"></u><u class="fin off">-</u></div></div><div class="prow"><div class="nm">TM1371 - BCUCR30VD.2/LVB2CL.M /</div><div class="oc">13 ago</div><div class="oc">15 ago</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:100%"></div><div class="fill" style="width:100%;background:#22c55e"></div></div><b>100%</b><span>d12/12</span><u class="flecha">&rarr;</u><u class="fin">29 ago</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:67%"></div><div class="fill" style="width:60%;background:#f59e0b"></div></div><b>60%</b><span>d8/12</span><u class="flecha">&rarr;</u><u class="fin">9 sep</u></div></div><div class="prow"><div class="nm">TM1370 - BCUCR40VD.2/MVF3FL.M /</div><div class="oc">13 ago</div><div class="oc">15 ago</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:100%"></div><div class="fill" style="width:100%;background:#22c55e"></div></div><b>100%</b><span>d12/12</span><u class="flecha">&rarr;</u><u class="fin">29 ago</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:67%"></div><div class="fill" style="width:60%;background:#f59e0b"></div></div><b>60%</b><span>d8/12</span><u class="flecha">&rarr;</u><u class="fin">9 sep</u></div></div></div>
+    <div class="cols1"><div class="prow phead"><div class="nm">Proyecto</div><div class="oc">Fecha OC</div><div class="oc">Alta trabajo</div><div class="fase"><i></i><div class="bar">BOMs</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion BOMs</u></div><div class="fase"><i></i><div class="bar">Planos</div><b>%</b><span>dia</span><u class="flecha"></u><u class="fin">Liberacion planos</u></div></div><div class="prow"><div class="nm">T7061 - FBO-BUCBR0901H6D /</div><div class="oc">24 jul</div><div class="oc">27 ago</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:83%"></div><div class="fill" style="width:0%;background:#ef4444"></div></div><b>0%</b><span>d10/12</span><u class="flecha">&rarr;</u><u class="fin">10 sep</u></div><div class="fase off"><i>PLANOS</i><div class="bar"></div><b>-</b><span>n/a</span><u class="flecha"></u><u class="fin off">-</u></div></div><div class="prow"><div class="nm">TM1371 - BCUCR30VD.2/LVB2CL.M /</div><div class="oc">13 ago</div><div class="oc">15 ago</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:100%"></div><div class="fill" style="width:100%;background:#22c55e"></div></div><b>100%</b><span>d12/12</span><u class="flecha">&rarr;</u><u class="fin">29 ago</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:67%"></div><div class="fill" style="width:60%;background:#f59e0b"></div></div><b>60%</b><span>d8/12</span><u class="flecha">&rarr;</u><u class="fin">9 sep</u></div></div><div class="prow"><div class="nm">TM1370 - BCUCR40VD.2/MVF3FL.M /</div><div class="oc">13 ago</div><div class="oc">15 ago</div><div class="fase"><i>LISTADOS</i><div class="bar"><div class="mark" style="left:100%"></div><div class="fill" style="width:100%;background:#22c55e"></div></div><b>100%</b><span>d12/12</span><u class="flecha">&rarr;</u><u class="fin">29 ago</u></div><div class="fase"><i>PLANOS</i><div class="bar"><div class="mark" style="left:67%"></div><div class="fill" style="width:60%;background:#f59e0b"></div></div><b>60%</b><span>d8/12</span><u class="flecha">&rarr;</u><u class="fin">9 sep</u></div></div></div>
   </div>
 
 </div>
@@ -295,7 +296,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 
   /* Huella de esta version. La usa el <img> de rescate de arriba y el
      refresco de abajo para detectar que la copia en pantalla ya caduco. */
-  window.__BUILD = "f5801ebda4";
+  window.__BUILD = "8bc6831b3f";
 
   var pedir = raiz.requestFullscreen || raiz.webkitRequestFullscreen ||
               raiz.mozRequestFullScreen || raiz.msRequestFullscreen;
