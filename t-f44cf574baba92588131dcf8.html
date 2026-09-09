@@ -1,0 +1,278 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="refresh" content="600">
+<meta name="robots" content="noindex,nofollow">
+<title>Planeación — qué llega de Ingeniería</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0b1220;color:#e8eefc;font-family:'Segoe UI',system-ui,sans-serif;
+padding:20px 26px 60px;line-height:1.35}
+header{display:flex;justify-content:space-between;align-items:baseline;
+border-bottom:2px solid #1e2a44;padding-bottom:10px;margin-bottom:18px;flex-wrap:wrap;gap:8px}
+h1{font-size:25px;letter-spacing:-.5px}
+h1 span{color:#60a5fa}
+.upd{font-size:13px;color:#8296b8}
+h2{font-size:12px;text-transform:uppercase;letter-spacing:1.2px;color:#8296b8;
+margin:28px 0 10px;font-weight:600}
+h2 em{font-style:normal;font-weight:400;text-transform:none;letter-spacing:0;
+color:#5b6e8c;margin-left:10px;font-size:11px}
+.card{background:#121c30;border:1px solid #1e2a44;border-radius:11px;padding:14px 16px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:13px}
+.big{font-size:38px;font-weight:700;line-height:1.05}
+.sub{font-size:13px;color:#a9bad4;margin-top:4px}
+.mini{font-size:11px;color:#5b6e8c;margin-top:8px;line-height:1.45}
+.rojo{color:#ef4444}.ambar{color:#f59e0b}.verde{color:#22c55e}.gris{color:#5b6e8c}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font-size:10px;text-transform:uppercase;letter-spacing:.7px;color:#7d90ad;
+text-align:left;padding:6px 7px;border-bottom:1px solid #24334f;font-weight:700;white-space:nowrap}
+td{padding:6px 7px;border-bottom:1px solid #1a2438;vertical-align:top}
+tr:last-child td{border-bottom:none}
+.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mut{color:#8296b8}
+.nm{white-space:nowrap;font-weight:600}
+.nm small{display:block;font-weight:400;font-size:10.5px;color:#5b6e8c}
+.pill{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:9px;
+white-space:nowrap;font-weight:600}
+.p-rojo{background:#4a1620;color:#ff8a8a}
+.p-ambar{background:#4a3410;color:#ffc25c}
+.p-verde{background:#12331f;color:#7fe0a0}
+.p-gris{background:#1a2438;color:#7d90ad}
+.p-azul{background:#152743;color:#8fc0ff}
+.cel{text-align:center;border-radius:5px;padding:5px 3px;font-weight:600;
+font-size:11.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.c-rojo{background:#4a1620;color:#ff8a8a}
+.c-ambar{background:#4a3410;color:#ffc25c}
+.c-verde{background:#12331f;color:#7fe0a0}
+.c-azul{background:#152743;color:#8fc0ff}
+.c-gris{background:#141c2c;color:#3c4a61}
+.hm th{text-align:center}
+.hm th.izq{text-align:left}
+.sem{margin-bottom:12px}
+.sem .cab{font-size:11px;text-transform:uppercase;letter-spacing:.8px;
+color:#7d90ad;font-weight:700;margin-bottom:6px}
+.sem .cab span{color:#5b6e8c;font-weight:400;text-transform:none;
+letter-spacing:0;margin-left:8px}
+.sem.hoy .cab{color:#60a5fa}
+.sem .cab.rojo{color:#ef4444}
+.chip{display:inline-block;background:#121c30;border:1px solid #1e2a44;
+border-radius:8px;padding:5px 10px;margin:0 6px 6px 0;font-size:12.5px}
+.chip b{font-weight:600}
+.chip .d{color:#7d90ad;font-size:11px;margin-left:7px}
+.chip.rojo{border-color:#5b1d28}.chip.ambar{border-color:#5b4415}
+.vacio{font-size:12px;color:#4a5b76;padding:3px 0 8px}
+.nota{font-size:11.5px;color:#7d90ad;margin-top:9px;line-height:1.55}
+.nota b{color:#a9bad4}
+.aviso{border-left:3px solid #ef4444;background:#1b1220;padding:10px 14px;
+border-radius:0 8px 8px 0;margin-bottom:14px;font-size:13.5px}
+.aviso.ok{border-left-color:#22c55e;background:#101d18}
+.aviso b{color:#fff}
+footer{margin-top:34px;padding-top:14px;border-top:1px solid #1e2a44;
+font-size:11.5px;color:#5b6e8c;line-height:1.6}
+</style></head><body>
+<header>
+  <h1>Planeación <span>· qué llega de Ingeniería</span></h1>
+  <div class="upd">Actualizado 09/09/2026 15:16
+   · se recarga sola cada 10 min</div>
+</header>
+
+<div class="aviso ok">Ninguna liberación vencida: todo lo pendiente tiene fecha por delante.</div>
+
+    <div class="cards">
+      <div class="card"><div class="big">3</div>
+        <div class="sub">liberaciones esta semana</div>
+        <div class="mini">Lo que entra a planta entre hoy y el sábado.</div></div>
+      <div class="card"><div class="big">0</div>
+        <div class="sub">la próxima semana</div>
+        <div class="mini">Con esto se arma el programa de la siguiente.</div></div>
+      <div class="card"><div class="big verde">0</div>
+        <div class="sub">vencidas</div>
+        <div class="mini">Comprometidas para un día que ya pasó.</div></div>
+      <div class="card"><div class="big">9</div>
+        <div class="sub">proyectos abiertos</div>
+        <div class="mini">Con trabajo de ingeniería que planta todavía espera.</div></div>
+    </div>
+
+<h2>Calendario de liberaciones <em>cuándo entra cada paquete a planta</em></h2>
+<div class="sem hoy"><div class="cab">Esta semana<span>7 sep – 12 sep</span></div><span class="chip ambar"><b>TM1371</b> Planos<span class="d">10 sep</span></span><span class="chip ambar"><b>TM1370</b> Planos<span class="d">10 sep</span></span><span class="chip ambar"><b>T7061</b> Listados<span class="d">11 sep</span></span></div><div class="sem"><div class="cab">La próxima<span>14 sep – 19 sep</span></div><div class="vacio">Sin liberaciones programadas.</div></div><div class="sem"><div class="cab">Sem. 21 sep<span>21 sep – 26 sep</span></div><span class="chip"><b>TM1331</b> Planos<span class="d">21 sep</span></span><span class="chip"><b>TM1424</b> Listados<span class="d">23 sep</span></span></div><div class="sem"><div class="cab">Sem. 28 sep<span>28 sep – 3 oct</span></div><span class="chip"><b>TM1424</b> Planos<span class="d">3 oct</span></span></div><div class="sem"><div class="cab">Sem. 5 oct<span>5 oct – 10 oct</span></div><div class="vacio">Sin liberaciones programadas.</div></div><div class="sem"><div class="cab">Sem. 12 oct<span>12 oct – 17 oct</span></div><div class="vacio">Sin liberaciones programadas.</div></div>
+
+<h2>Estado por proyecto <em>las dos entregas que recibe producción</em></h2>
+<table><tr>
+      <th>Proyecto</th><th>Etapa</th><th>Familia</th>
+      <th>Listados → planta</th><th>Planos → planta</th>
+      <th class="num">Compromiso cliente</th>
+    </tr><tr>
+          <td class="nm">TM1370
+            <small>BCUCR40VD.2/MVF3FL.M</small></td>
+          <td class="mut">Diseño</td>
+          <td class="mut">C3 - Media</td>
+          <td><span class="pill p-verde">Liberado</span> <span class="mut">29 ago</span><div class="mini">Además, fuera de los dos paquetes: <b>Pruebas, Housing</b> · 2 oct</div></td>
+          <td><span class="pill p-ambar">En riesgo</span> <span class="mut">10 sep</span> <span class="mut">· falta 2 de 5</span></td>
+          <td class="num mut">27 oct</td>
+        </tr><tr>
+          <td class="nm">TM1371
+            <small>BCUCR30VD.2/LVB2CL.M</small></td>
+          <td class="mut">Diseño</td>
+          <td class="mut">C3 - Media</td>
+          <td><span class="pill p-verde">Liberado</span> <span class="mut">31 ago</span><div class="mini">Además, fuera de los dos paquetes: <b>Pruebas, Housing</b> · 2 oct</div></td>
+          <td><span class="pill p-ambar">En riesgo</span> <span class="mut">10 sep</span> <span class="mut">· falta 2 de 5</span></td>
+          <td class="num mut">27 oct</td>
+        </tr><tr>
+          <td class="nm">T7061
+            <small>FBO-BUCBR0901H6D</small></td>
+          <td class="mut">OT Recibida</td>
+          <td class="mut">Sin clasificar</td>
+          <td><span class="pill p-ambar">En riesgo</span> <span class="mut">11 sep</span> <span class="mut">· falta 1 de 1</span><div class="mini">Además, fuera de los dos paquetes: <b>Revisar que cambios genera el cambio de compresor…</b> · 10 sep</div></td>
+          <td><span class="gris" title="Sin entregables de este paquete en Notion">—</span></td>
+          <td class="num rojo">3 sep</td>
+        </tr><tr>
+          <td class="nm">TM1331
+            <small>MAF-12-20</small></td>
+          <td class="mut">Diseño</td>
+          <td class="mut">C2 - Baja</td>
+          <td><span class="pill p-verde">Liberado</span> <span class="mut">29 ago</span></td>
+          <td><span class="pill p-azul">En tiempo</span> <span class="mut">21 sep</span> <span class="mut">· falta 1 de 2</span></td>
+          <td class="num mut">8 oct</td>
+        </tr><tr>
+          <td class="nm">TM1424
+            <small>FIM-1000-SAC-SC</small></td>
+          <td class="mut">OT Recibida</td>
+          <td class="mut">C4 - Alta</td>
+          <td><span class="pill p-azul">En tiempo</span> <span class="mut">23 sep</span> <span class="mut">· falta 9 de 9</span></td>
+          <td><span class="pill p-azul">En tiempo</span> <span class="mut">3 oct</span> <span class="mut">· falta 5 de 5</span></td>
+          <td class="num mut">14 oct</td>
+        </tr><tr>
+          <td class="nm">TM1148
+            <small>PTS-411-L6D</small></td>
+          <td class="mut">Listo para Producción</td>
+          <td class="mut">C5 - Muy alta</td>
+          <td><span class="pill p-verde">Liberado</span> <span class="mut">6 jun</span><div class="mini">Además, fuera de los dos paquetes: <b>Pruebas</b> · 14 sep</div></td>
+          <td><span class="pill p-verde">Liberado</span> <span class="mut">26 jun</span></td>
+          <td class="num rojo">21 jul</td>
+        </tr><tr>
+          <td class="nm">TM1336
+            <small>MAF-12-20C</small></td>
+          <td class="mut">Diseño</td>
+          <td class="mut">C2 - Baja</td>
+          <td><span class="pill p-verde">Liberado</span> <span class="mut">20 ago</span><div class="mini">Además, fuera de los dos paquetes: <b>Plano de forrado</b> · 14 sep</div></td>
+          <td><span class="pill p-verde">Liberado</span> <span class="mut">26 ago</span></td>
+          <td class="num mut">12 oct</td>
+        </tr><tr>
+          <td class="nm">TM1333
+            <small>MAF-12-20C</small></td>
+          <td class="mut">Diseño</td>
+          <td class="mut">C2 - Baja</td>
+          <td><span class="pill p-verde">Liberado</span> <span class="mut">6 ago</span></td>
+          <td><span class="pill p-verde">Liberado</span> <span class="mut">26 ago</span></td>
+          <td class="num mut">21 oct</td>
+        </tr><tr>
+          <td class="nm">HUCZ / HUCZO — 9 equipos
+            <small>TM1399, TM1400, TM1401, TM1402 y 5 más</small></td>
+          <td class="mut">Listo para Producción</td>
+          <td class="mut">CE - Especial</td>
+          <td><span class="pill p-verde">Liberado</span> <span class="mut">9 sep</span></td>
+          <td><span class="gris" title="Sin entregables de este paquete en Notion">—</span></td>
+          <td class="num mut">25 sep</td>
+        </tr></table>
+<div class="nota">Los <b>listados</b> sirven para comprar y surtir; los <b>planos</b>,
+para fabricar. Cada paquete llega completo o no llega: si falta un solo listado, el
+proceso que depende de él sigue detenido aunque los demás estén.
+La fecha que se muestra es la de <b>entrada a planta</b> — el día hábil siguiente al
+cierre del cronograma, no el último día que Ingeniería tiene para terminar.</div>
+
+<h2>Procesos que ya pueden arrancar <em>según los listados liberados</em></h2>
+<table class="hm"><tr><th class="izq">Proyecto</th><th>Chasis</th><th>Soldadura</th><th>Tablero</th><th>Montaje</th><th>Tubería</th><th>Interconex.</th><th>Embalaje</th></tr><tr><td class="nm">TM1370</td><td class="cel c-verde">listo</td><td class="cel c-verde">listo</td><td class="cel c-verde">listo</td><td class="cel c-verde">listo</td><td class="cel c-verde">listo</td><td class="cel c-verde">listo</td><td class="cel c-verde">listo</td></tr><tr><td class="nm">TM1371</td><td class="cel c-verde">listo</td><td class="cel c-verde">listo</td><td class="cel c-verde">listo</td><td class="cel c-verde">listo</td><td class="cel c-verde">listo</td><td class="cel c-verde">listo</td><td class="cel c-verde">listo</td></tr><tr><td class="nm">T7061</td><td class="cel c-gris">—</td><td class="cel c-gris">—</td><td class="cel c-gris">—</td><td class="cel c-ambar">11 sep</td><td class="cel c-gris">—</td><td class="cel c-gris">—</td><td class="cel c-gris">—</td></tr><tr><td class="nm">TM1331</td><td class="cel c-verde">listo</td><td class="cel c-gris">—</td><td class="cel c-gris">—</td><td class="cel c-verde">listo</td><td class="cel c-gris">—</td><td class="cel c-gris">—</td><td class="cel c-gris">—</td></tr><tr><td class="nm">TM1424</td><td class="cel c-azul">16 sep</td><td class="cel c-azul">17 sep</td><td class="cel c-azul">23 sep</td><td class="cel c-azul">17 sep</td><td class="cel c-azul">23 sep</td><td class="cel c-azul">23 sep</td><td class="cel c-ambar">12 sep</td></tr><tr><td class="nm">TM1148</td><td class="cel c-verde">listo</td><td class="cel c-verde">listo</td><td class="cel c-verde">listo</td><td class="cel c-verde">listo</td><td class="cel c-verde">listo</td><td class="cel c-gris">—</td><td class="cel c-verde">listo</td></tr><tr><td class="nm">TM1336</td><td class="cel c-verde">listo</td><td class="cel c-gris">—</td><td class="cel c-gris">—</td><td class="cel c-verde">listo</td><td class="cel c-gris">—</td><td class="cel c-gris">—</td><td class="cel c-gris">—</td></tr><tr><td class="nm">TM1333</td><td class="cel c-verde">listo</td><td class="cel c-gris">—</td><td class="cel c-gris">—</td><td class="cel c-verde">listo</td><td class="cel c-gris">—</td><td class="cel c-gris">—</td><td class="cel c-gris">—</td></tr><tr><td class="nm">HUCZ / HUCZO — 9 equipos</td><td class="cel c-gris">—</td><td class="cel c-gris">—</td><td class="cel c-verde">listo</td><td class="cel c-verde">listo</td><td class="cel c-verde">listo</td><td class="cel c-gris">—</td><td class="cel c-gris">—</td></tr></table>
+<div class="nota"><b>listo</b> = todos los listados de ese proceso están entregados y
+producción puede arrancarlo. Una fecha = el día en que se libera si nada se mueve.
+<b>—</b> = ese equipo no tiene listados de ese proceso capturados. El mapeo listado → proceso sale del
+estándar de listados y de la fórmula «Proceso Asociado» de Notion.</div>
+
+<h2>Qué está detenido <em>vencido y todavía sin entregar</em></h2>
+<table><tr>
+          <th>Proyecto</th><th>Qué falta</th><th>Responsable</th>
+          <th class="num">Vencido</th><th class="num">Debió salir</th>
+          <th>Detiene</th><th>Nota</th>
+        </tr><tr>
+              <td class="nm">TM1371</td>
+              <td>Plano Ensamblaje</td>
+              <td class="mut">Juan Jesus Roldan Leyva</td>
+              <td class="num rojo">2 d</td>
+              <td class="mut num">7 sep</td>
+              <td class="mut">Fabricación</td>
+              <td class="mut">—</td>
+            </tr><tr>
+              <td class="nm">TM1370</td>
+              <td>Plano Ensamblaje</td>
+              <td class="mut">Daniel Abraham Valenzuela Romo</td>
+              <td class="num rojo">2 d</td>
+              <td class="mut num">7 sep</td>
+              <td class="mut">Fabricación</td>
+              <td class="mut">—</td>
+            </tr></table>
+        <div class="nota"><b>Vencido</b> son días hábiles desde el último día que
+        tenía para entregarse. La columna <b>Detiene</b> dice qué proceso de planta
+        no puede arrancar mientras ese listado no salga.</div>
+
+<h2>Por entrar <em>dados de alta, sin cronograma todavía</em></h2>
+<table><tr><th>Proyecto</th><th>Etapa</th><th>Familia</th><th class="num">Alta</th><th class="num">Compromiso cliente</th></tr><tr>
+          <td class="nm">TM1433<small>MER-TCMT1</small></td>
+          <td class="mut">Back log</td>
+          <td class="mut">Sin clasificar</td>
+          <td class="mut num">9 sep</td>
+          <td class="mut num">16 sep</td>
+        </tr><tr>
+          <td class="nm">TM1434<small>MER-TCMT1</small></td>
+          <td class="mut">Back log</td>
+          <td class="mut">Sin clasificar</td>
+          <td class="mut num">9 sep</td>
+          <td class="mut num">22 sep</td>
+        </tr><tr>
+          <td class="nm">TM1426<small>BCUCZ0350FS.1/MFB0X.M</small></td>
+          <td class="mut">Back log</td>
+          <td class="mut">C1 - Express</td>
+          <td class="mut num">9 sep</td>
+          <td class="mut num">1 oct</td>
+        </tr><tr>
+          <td class="nm">TM1427<small>BCUCZ0450FS.1/MFB0X.M</small></td>
+          <td class="mut">Back log</td>
+          <td class="mut">C1 - Express</td>
+          <td class="mut num">9 sep</td>
+          <td class="mut num">1 oct</td>
+        </tr><tr>
+          <td class="nm">TM1428<small>BCUCZ0400FS.1/MFB0X.M</small></td>
+          <td class="mut">Back log</td>
+          <td class="mut">C1 - Express</td>
+          <td class="mut num">9 sep</td>
+          <td class="mut num">1 oct</td>
+        </tr><tr>
+          <td class="nm">TM1429<small>BCUCZ0500FS.1/MFB0X.M</small></td>
+          <td class="mut">Back log</td>
+          <td class="mut">C1 - Express</td>
+          <td class="mut num">9 sep</td>
+          <td class="mut num">1 oct</td>
+        </tr><tr>
+          <td class="nm">TM1430<small>BCUCZ0350FS.1/MFB0X.M</small></td>
+          <td class="mut">Back log</td>
+          <td class="mut">C1 - Express</td>
+          <td class="mut num">9 sep</td>
+          <td class="mut num">30 oct</td>
+        </tr><tr>
+          <td class="nm">TM1431<small>BCUCZ0450FS.1/MFB0X.M</small></td>
+          <td class="mut">Back log</td>
+          <td class="mut">C1 - Express</td>
+          <td class="mut num">9 sep</td>
+          <td class="mut num">30 oct</td>
+        </tr><tr>
+          <td class="nm">TM1432<small>BCUCZ0500FS.1/MFB0X.M</small></td>
+          <td class="mut">Back log</td>
+          <td class="mut">C1 - Express</td>
+          <td class="mut num">9 sep</td>
+          <td class="mut num">30 oct</td>
+        </tr></table><div class="nota">Dados de alta pero todavía <b>sin entregables generados</b>: no tienen fechas de liberación que programar. Hasta que se les corra el checklist no aparecen en el calendario de arriba.</div>
+
+<footer>
+Lee la misma Notion que el tablero de Ingeniería y <b>no escribe nada en ella</b>.
+Cronograma, fechas y duraciones vienen de <b>build_checklist.py</b>: si cambia una
+duración allá, esta página se mueve sola.<br>
+A diferencia del tablero, aquí <b>no hay corte de fecha</b>: se muestra todo lo que
+producción sigue esperando, por viejo que sea. 1 proyecto ya liberado no aparece en las tablas.
+</footer>
+</body></html>
