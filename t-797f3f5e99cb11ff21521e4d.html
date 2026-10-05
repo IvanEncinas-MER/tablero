@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<meta name="build" content="63936c24ce">
+<meta name="build" content="08fb932261">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="referrer" content="no-referrer">
@@ -217,8 +217,8 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 </style></head><body>
 <header>
   <h1>Ingenieria <span>/ Tablero</span></h1>
-  <div class="upd">Actualizado 05/10/2026 14:48 &nbsp;·&nbsp;
-    <span id="edad" data-gen="2026-10-05T14:48:06">se refresca solo</span></div>
+  <div class="upd">Actualizado 05/10/2026 14:58 &nbsp;·&nbsp;
+    <span id="edad" data-gen="2026-10-05T14:58:31">se refresca solo</span></div>
 </header>
 <div class="grid">
 
@@ -297,7 +297,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 
   /* Huella de esta version. La usa el <img> de rescate de arriba y el
      refresco de abajo para detectar que la copia en pantalla ya caduco. */
-  window.__BUILD = "63936c24ce";
+  window.__BUILD = "08fb932261";
 
   var pedir = raiz.requestFullscreen || raiz.webkitRequestFullscreen ||
               raiz.mozRequestFullScreen || raiz.msRequestFullscreen;
@@ -351,6 +351,40 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
     return true;
   }
 
+  /* PROYECTOS: que quepan todos, en la pantalla que sea.
+     El modo compacto se decidia en Python por NUMERO (mas de 7) sin saber
+     el tamano de la pantalla: el 5-oct, con 7 proyectos y tres de nombre
+     largo (HUCZ, dos "SIN OT"), en la TV se cortaban los ultimos. Ahora se
+     MIDE: si la ultima fila no cabe en la tarjeta, se pasa a compacto; y si
+     aun no, se reduce la tabla completa en pasos hasta que entre. */
+  function ajustarProyectos(){
+    var t = document.querySelector('.cols1');
+    if (!t) return;
+    var card = t.parentNode;
+    while (card && (' ' + card.className + ' ').indexOf(' card ') < 0) card = card.parentNode;
+    if (!card) return;
+    if (t.getAttribute('data-base') === null)
+      t.setAttribute('data-base', t.className);      /* lo que mando Python */
+    t.className = t.getAttribute('data-base');
+    t.style.transform = ''; t.style.width = '';
+    function cabenTodos(){
+      var filas = t.querySelectorAll('.prow');
+      if (!filas.length) return true;
+      var ult = filas[filas.length - 1].getBoundingClientRect().bottom;
+      var pie = parseFloat(getComputedStyle(card).paddingBottom) || 0;
+      return ult <= card.getBoundingClientRect().bottom - pie;
+    }
+    if (cabenTodos()) return;
+    if (t.className.indexOf('compacto') < 0) t.className += ' compacto';
+    var f = 1, n = 0;
+    t.style.transformOrigin = '0 0';
+    while (!cabenTodos() && n < 14) {
+      f *= 0.94; n++;
+      t.style.transform = 'scale(' + f.toFixed(3) + ')';
+      t.style.width = (100 / f).toFixed(2) + '%';   /* que siga a todo lo ancho */
+    }
+  }
+
   function ajustar(){
     var cards = document.querySelectorAll('.colstack .card, .card.ajustable');
     for (var i = 0; i < cards.length; i++) {
@@ -372,6 +406,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
         }
       }
     }
+    ajustarProyectos();
   }
   ajustar();
   if (window.addEventListener) window.addEventListener('resize', ajustar);
