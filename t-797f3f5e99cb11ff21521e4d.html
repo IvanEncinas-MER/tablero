@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<meta name="build" content="d4fd8e95aa">
+<meta name="build" content="9885e46348">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="referrer" content="no-referrer">
@@ -229,7 +229,15 @@ border-radius:2px;z-index:3;box-shadow:0 0 0 1px rgba(11,18,32,.9),0 0 7px rgba(
 border-left:4px solid transparent;border-right:4px solid transparent;
 border-top:5px solid #fff}
 .incgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
-.trend.inc{height:calc(100% - 86px)}
+.trend.inc{height:calc(100% - 60px)}
+/* Barras delgadas y altas (Ivan, 30-oct): antes casi no se veian */
+.trend.inc .tcol{max-width:70px}
+.trend.inc .tbar{width:26px;width:clamp(16px,1.9vw,28px);flex:0 0 auto}
+.trend.inc .tval{margin-bottom:2px}
+.trend.inc .tlab{margin-top:3px}
+.incsub{font-size:11px;color:#5b6e8c;white-space:nowrap;overflow:hidden;
+text-overflow:ellipsis;margin-bottom:2px}
+.kd small .aa{color:#22c55e;font-weight:600}
 /* Barra apilada: el fondo es el total del mes y el bloque de abajo, pegado
    al eje, son las mayores/criticas. Van abajo porque es donde el ojo compara
    alturas sin tener que restar. */
@@ -247,7 +255,6 @@ font-size:11px;color:#8296b8;white-space:nowrap;overflow:hidden}
 .leyi .sw{width:11px;height:11px;border-radius:2px;flex:none}
 .leyi .sw-tot{background:#6d5bd0}
 .leyi .sw-gra{background:#ef4444}
-.trend.inc .tcol{max-width:110px}
 .pend{margin-top:14px;padding-top:12px;border-top:1px dashed #24334f;
 font-size:13px;color:#5b6e8c}
 #edad.viejo{color:#0b1220;background:#f59e0b;font-weight:700;
@@ -258,24 +265,24 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 </style></head><body>
 <header>
   <h1>Ingenieria <span>/ Tablero</span></h1>
-  <div class="upd">Actualizado 30/10/2026 13:21 &nbsp;·&nbsp;
-    <span id="edad" data-gen="2026-10-30T13:21:02">se refresca solo</span></div>
+  <div class="upd">Actualizado 30/10/2026 13:31 &nbsp;·&nbsp;
+    <span id="edad" data-gen="2026-10-30T13:31:26">se refresca solo</span></div>
 </header>
 <div class="grid">
 
   <div class="card kpicard ajustable">
     <h2>Indicadores &middot; Oct-2026 <em>en lo que va del mes</em></h2>
-    <div class="kt"><div class="kv1" style="color:#22c55e">17%</div><div class="kd"><b>OC → alta</b> <i>meta ≤ 25% · 30 casos</i><small>del plazo se pierde antes de la alta</small><div class="kp">Sep-2026: 12% (antes de los KPIs)</div></div></div><div class="kt"><div class="kv1" style="color:#ef4444">77%</div><div class="kd"><b>OTD interno</b> <i>meta ≥ 90% · 52 casos</i><small>BOMs y planos a tiempo, desde la alta</small><div class="kp">Sep-2026: 83% (antes de los KPIs)</div></div></div><div class="kt"><div class="kv1" style="color:#ef4444">70%</div><div class="kd"><b>OTD externo</b> <i>meta ≥ 95% · 10 casos</i><small>paquetes a tiempo para Producción y SC</small><div class="kp">Sep-2026: 71% (antes de los KPIs)</div></div></div>
+    <div class="kt"><div class="kv1" style="color:#ef4444">17%</div><div class="kd"><b>OC → alta</b> <i>meta ≤ 10% · 30 casos</i><small>15 proy. llegaron tarde (29 días) · <span class="aa">aun así a tiempo 2 de 3 paquetes</span></small><div class="kp">Sep-2026: 12% (antes de los KPIs)</div></div></div><div class="kt"><div class="kv1" style="color:#ef4444">78%</div><div class="kd"><b>OTD interno</b> <i>meta ≥ 90% · 54 casos</i><small>BOMs y planos a tiempo, desde la alta</small><div class="kp">Sep-2026: 83% (antes de los KPIs)</div></div></div><div class="kt"><div class="kv1" style="color:#ef4444">70%</div><div class="kd"><b>OTD externo</b> <i>meta ≥ 95% · 10 casos</i><small>paquetes a tiempo para Producción y SC</small><div class="kp">Sep-2026: 71% (antes de los KPIs)</div></div></div>
   </div>
 
   <div class="card">
     <h2>Tendencia de indicadores <em>barra = semáforo vs meta &middot; punteada = tendencia</em></h2>
-    <div class="leyi leyt"><span><i class="sw" style="background:#c4b5fd"></i>OC → alta ≤ 25%</span><span><i class="sw" style="background:#7dd3fc"></i>OTD interno ≥ 90%</span><span><i class="sw" style="background:#fdba74"></i>OTD externo ≥ 95%</span></div><div class="kplot"><div class="kb" style="left:5.33%;width:6.67%;height:13.3%;background:#22c55e"></div><div class="kn" style="left:8.67%;bottom:13.3%">17</div><div class="kb" style="left:13.33%;width:6.67%;height:80.0%;background:#22c55e"></div><div class="kn" style="left:16.67%;bottom:80.0%">100</div><div class="kb" style="left:21.33%;width:6.67%;height:80.0%;background:#22c55e"></div><div class="kn" style="left:24.67%;bottom:80.0%">100</div><div class="kb" style="left:38.67%;width:6.67%;height:9.7%;background:#22c55e"></div><div class="kn" style="left:42.00%;bottom:9.7%">12</div><div class="kb" style="left:46.67%;width:6.67%;height:66.7%;background:#f59e0b"></div><div class="kn" style="left:50.00%;bottom:66.7%">83</div><div class="kb" style="left:54.67%;width:6.67%;height:57.1%;background:#ef4444"></div><div class="kn" style="left:58.00%;bottom:57.1%">71</div><div class="kb" style="left:72.00%;width:6.67%;height:13.5%;background:#22c55e"></div><div class="kn" style="left:75.33%;bottom:13.5%">17</div><div class="kb" style="left:80.00%;width:6.67%;height:61.5%;background:#ef4444"></div><div class="kn" style="left:83.33%;bottom:61.5%">77</div><div class="kb" style="left:88.00%;width:6.67%;height:56.0%;background:#ef4444"></div><div class="kn" style="left:91.33%;bottom:56.0%">70</div><svg viewBox="0 0 100 100" preserveAspectRatio="none"><polyline points="8.67,86.67 42.00,90.29 75.33,86.47" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-dasharray="5 4" vector-effect="non-scaling-stroke"/><polyline points="16.67,20.00 50.00,33.33 83.33,38.46" fill="none" stroke="#7dd3fc" stroke-width="2" stroke-dasharray="5 4" vector-effect="non-scaling-stroke"/><polyline points="24.67,20.00 58.00,42.86 91.33,44.00" fill="none" stroke="#fdba74" stroke-width="2" stroke-dasharray="5 4" vector-effect="non-scaling-stroke"/></svg></div><div class="kaxis"><span class="kl" style="left:8.67%">OC</span><span class="kl" style="left:16.67%">INT</span><span class="kl" style="left:24.67%">EXT</span><span class="km" style="left:16.67%">AGO</span><span class="kl" style="left:42.00%">OC</span><span class="kl" style="left:50.00%">INT</span><span class="kl" style="left:58.00%">EXT</span><span class="km" style="left:50.00%">SEP</span><span class="kl" style="left:75.33%">OC</span><span class="kl" style="left:83.33%">INT</span><span class="kl" style="left:91.33%">EXT</span><span class="km" style="left:83.33%">OCT</span></div>
+    <div class="leyi leyt"><span><i class="sw" style="background:#c4b5fd"></i>OC → alta ≤ 10%</span><span><i class="sw" style="background:#7dd3fc"></i>OTD interno ≥ 90%</span><span><i class="sw" style="background:#fdba74"></i>OTD externo ≥ 95%</span></div><div class="kplot"><div class="kb" style="left:5.33%;width:6.67%;height:13.3%;background:#ef4444"></div><div class="kn" style="left:8.67%;bottom:13.3%">17</div><div class="kb" style="left:13.33%;width:6.67%;height:80.0%;background:#22c55e"></div><div class="kn" style="left:16.67%;bottom:80.0%">100</div><div class="kb" style="left:21.33%;width:6.67%;height:80.0%;background:#22c55e"></div><div class="kn" style="left:24.67%;bottom:80.0%">100</div><div class="kb" style="left:38.67%;width:6.67%;height:9.7%;background:#f59e0b"></div><div class="kn" style="left:42.00%;bottom:9.7%">12</div><div class="kb" style="left:46.67%;width:6.67%;height:66.7%;background:#f59e0b"></div><div class="kn" style="left:50.00%;bottom:66.7%">83</div><div class="kb" style="left:54.67%;width:6.67%;height:57.1%;background:#ef4444"></div><div class="kn" style="left:58.00%;bottom:57.1%">71</div><div class="kb" style="left:72.00%;width:6.67%;height:13.5%;background:#ef4444"></div><div class="kn" style="left:75.33%;bottom:13.5%">17</div><div class="kb" style="left:80.00%;width:6.67%;height:62.2%;background:#ef4444"></div><div class="kn" style="left:83.33%;bottom:62.2%">78</div><div class="kb" style="left:88.00%;width:6.67%;height:56.0%;background:#ef4444"></div><div class="kn" style="left:91.33%;bottom:56.0%">70</div><svg viewBox="0 0 100 100" preserveAspectRatio="none"><polyline points="8.67,86.67 42.00,90.29 75.33,86.47" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-dasharray="5 4" vector-effect="non-scaling-stroke"/><polyline points="16.67,20.00 50.00,33.33 83.33,37.78" fill="none" stroke="#7dd3fc" stroke-width="2" stroke-dasharray="5 4" vector-effect="non-scaling-stroke"/><polyline points="24.67,20.00 58.00,42.86 91.33,44.00" fill="none" stroke="#fdba74" stroke-width="2" stroke-dasharray="5 4" vector-effect="non-scaling-stroke"/></svg></div><div class="kaxis"><span class="kl" style="left:8.67%">OC</span><span class="kl" style="left:16.67%">INT</span><span class="kl" style="left:24.67%">EXT</span><span class="km" style="left:16.67%">AGO</span><span class="kl" style="left:42.00%">OC</span><span class="kl" style="left:50.00%">INT</span><span class="kl" style="left:58.00%">EXT</span><span class="km" style="left:50.00%">SEP</span><span class="kl" style="left:75.33%">OC</span><span class="kl" style="left:83.33%">INT</span><span class="kl" style="left:91.33%">EXT</span><span class="km" style="left:83.33%">OCT</span></div>
   </div>
 
   <div class="card">
     <h2>Bitacora de incidencias <em>origen Ing. mecanica / electrica</em></h2>
-    <div class="sub2">Por mes <em>114 de Ingenieria &nbsp;·&nbsp; 26 mayores/criticas &nbsp;·&nbsp; 0 sin cerrar</em></div><div class="trend inc"><div class="tcol"><div class="tval">60<span class="tg">12</span></div><div class="tbar apil" style="height:32.0%"><i style="height:20.0%"></i></div><div class="tlab">JUL</div></div><div class="tcol"><div class="tval">28<span class="tg">9</span></div><div class="tbar apil" style="height:14.9%"><i style="height:32.1%"></i></div><div class="tlab">AUG</div></div><div class="tcol"><div class="tval">15<span class="tg">3</span></div><div class="tbar apil" style="height:8.0%"><i style="height:20.0%"></i></div><div class="tlab">SEP</div></div><div class="tcol"><div class="tval">11<span class="tg">2</span></div><div class="tbar apil" style="height:5.9%"><i style="height:18.2%"></i></div><div class="tlab">OCT</div></div></div><div class="leyi"><span><i class="sw sw-tot"></i>Total</span><span><i class="sw sw-gra"></i>Mayor o critica: paran produccion</span></div>
+    <div class="incsub">114 en total &middot; 26 graves &middot; 0 abiertas</div><div class="trend inc"><div class="tcol"><div class="tval">60<span class="tg">12</span></div><div class="tbar apil" style="height:54.0%"><i style="height:20.0%"></i></div><div class="tlab">JUL</div></div><div class="tcol"><div class="tval">28<span class="tg">9</span></div><div class="tbar apil" style="height:25.2%"><i style="height:32.1%"></i></div><div class="tlab">AUG</div></div><div class="tcol"><div class="tval">15<span class="tg">3</span></div><div class="tbar apil" style="height:13.5%"><i style="height:20.0%"></i></div><div class="tlab">SEP</div></div><div class="tcol"><div class="tval">11<span class="tg">2</span></div><div class="tbar apil" style="height:9.9%"><i style="height:18.2%"></i></div><div class="tlab">OCT</div></div></div><div class="leyi"><span><i class="sw sw-tot"></i>Total</span><span><i class="sw sw-gra"></i>Mayor o critica: paran produccion</span></div>
   </div>
 
   <div class="colstack">
@@ -291,7 +298,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
     </div>
     <div class="card ajustable">
       <h2>Por revisar <em>entregables en revisión · junta: nada pendiente</em></h2>
-      <div class="row"><div class="nm">Manuel</div><div class="bar"><div class="fill" style="width:100%;background:#a78bfa"></div></div><div class="vl">4</div></div><div class="row"><div class="nm">Gabriel</div><div class="bar"><div class="fill" style="width:75%;background:#a78bfa"></div></div><div class="vl">3</div></div>
+      <div class="row"><div class="nm">Manuel</div><div class="bar"><div class="fill" style="width:100%;background:#a78bfa"></div></div><div class="vl">4</div></div><div class="row"><div class="nm">Gabriel</div><div class="bar"><div class="fill" style="width:50%;background:#a78bfa"></div></div><div class="vl">2</div></div>
     </div>
   </div>
 
@@ -331,7 +338,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 
   /* Huella de esta version. La usa el <img> de rescate de arriba y el
      refresco de abajo para detectar que la copia en pantalla ya caduco. */
-  window.__BUILD = "d4fd8e95aa";
+  window.__BUILD = "9885e46348";
 
   var pedir = raiz.requestFullscreen || raiz.webkitRequestFullscreen ||
               raiz.mozRequestFullScreen || raiz.msRequestFullscreen;
