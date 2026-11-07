@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<meta name="build" content="0771b8cfe6">
+<meta name="build" content="cf25ea1f80">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="referrer" content="no-referrer">
@@ -138,7 +138,14 @@ letter-spacing:0;color:#5b6e8c;margin-left:0;margin-top:1px;font-size:10px}
 /* variante de un solo renglon, para cuando no hay nada que listar */
 .sub2.compacta em{display:inline;margin-left:7px}
 .junta{font-size:14px;font-size:clamp(11px,1.5vh,14px);color:#a9bad4;
-margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+margin-top:4px;padding-top:4px;border-top:1px solid #1e2a44;flex-shrink:0}
+.colstack .card.revisar{padding-bottom:6px;flex:0 0 auto}
+.card.revisar h2{margin-bottom:2px}
+.rvh{font-size:12px;font-size:clamp(11px,1.5vh,14px);font-weight:400;text-transform:none;
+letter-spacing:0;color:#e8eefc;margin-left:5px;white-space:nowrap}
+.rvh b{color:#a78bfa;font-size:1.15em}
+.junta .jt{font-size:.8em;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
+color:#b9c8e2;margin-right:3px}
 .junta .jp{color:#7b8ba6;font-size:.85em}
 .junta b{color:#fbbf24;font-size:16px;font-size:clamp(13px,1.8vh,16px)}
 .sub2.sep{margin-top:12px;margin-top:clamp(4px,1.6vh,12px);
@@ -267,8 +274,8 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 </style></head><body>
 <header>
   <h1>Ingenieria <span>/ Tablero</span></h1>
-  <div class="upd">Actualizado 07/11/2026 12:38 &nbsp;·&nbsp;
-    <span id="edad" data-gen="2026-11-07T12:38:26">se refresca solo</span></div>
+  <div class="upd">Actualizado 07/11/2026 12:48 &nbsp;·&nbsp;
+    <span id="edad" data-gen="2026-11-07T12:48:52">se refresca solo</span></div>
 </header>
 <div class="grid">
 
@@ -298,9 +305,9 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
         <div class="kpi"><b style="color:#8296b8">12</b><small>sin fecha</small></div>
       </div>
     </div>
-    <div class="card ajustable">
-      <h2>Por revisar <em>entregables en revisión</em></h2>
-      <div class="vacio ok">Revisores sin pendientes</div><div class="sub2 sep">Junta diaria <em>por aprobar</em></div><div class="junta"><b>3</b> Layout <span class="jp">TM1494, TM1516, TM1550</span></div>
+    <div class="card ajustable revisar">
+      <h2>Por revisar <em>revisores al día</em></h2>
+      <div class="junta"><span class="jt">Junta</span> <b>3</b> Layout <span class="jp">TM1494, TM1516, TM1550</span></div>
     </div>
   </div>
 
@@ -340,7 +347,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
 
   /* Huella de esta version. La usa el <img> de rescate de arriba y el
      refresco de abajo para detectar que la copia en pantalla ya caduco. */
-  window.__BUILD = "0771b8cfe6";
+  window.__BUILD = "cf25ea1f80";
 
   var pedir = raiz.requestFullscreen || raiz.webkitRequestFullscreen ||
               raiz.mozRequestFullScreen || raiz.msRequestFullscreen;
@@ -386,7 +393,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
        overflow propio esconde el desborde del contenedor. */
     if (c.scrollHeight > c.clientHeight + 1) return false;
     var lim = c.getBoundingClientRect().bottom - 2;
-    var hijos = c.querySelectorAll('small,.vacio,.sub2,.nm');
+    var hijos = c.querySelectorAll('small,.vacio,.sub2,.nm,.junta');
     for (var i = 0; i < hijos.length; i++) {
       if (hijos[i].offsetHeight &&
           hijos[i].getBoundingClientRect().bottom > lim) return false;
@@ -432,7 +439,7 @@ border-radius:999px;font-size:15px;z-index:99;box-shadow:0 4px 18px #0006}
     var cards = document.querySelectorAll('.colstack .card, .card.ajustable');
     for (var i = 0; i < cards.length; i++) {
       var c = cards[i];
-      var els = c.querySelectorAll('h2,.big,.sub,.sub2,.sub2 em,.kpi b,.kpi small,.nm,.vl,.vacio');
+      var els = c.querySelectorAll('h2,.big,.sub,.sub2,.sub2 em,.kpi b,.kpi small,.nm,.vl,.vacio,.junta');
       var j;
       for (j = 0; j < els.length; j++) els[j].style.fontSize = '';   /* partir de cero */
       if (cabe(c)) continue;
